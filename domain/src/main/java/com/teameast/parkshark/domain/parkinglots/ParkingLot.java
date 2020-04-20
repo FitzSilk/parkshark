@@ -1,6 +1,6 @@
 package com.teameast.parkshark.domain.parkinglots;
 
-import com.teameast.parkshark.domain.Person;
+import com.teameast.parkshark.domain.personalinformation.Person;
 import com.teameast.parkshark.domain.personalinformation.Address;
 
 public class ParkingLot {

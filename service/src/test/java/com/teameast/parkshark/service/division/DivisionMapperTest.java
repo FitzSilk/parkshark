@@ -2,7 +2,7 @@ package com.teameast.parkshark.service.division;
 
 import com.teameast.parkshark.domain.division.*;
 import com.teameast.parkshark.domain.division.DivisionRepository;
-import com.teameast.parkshark.domain.Person;
+import com.teameast.parkshark.domain.personalinformation.Person;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,13 +1,12 @@
 package com.teameast.parkshark.domain.parkinglots;
 
-import com.teameast.parkshark.domain.Person;
+import com.teameast.parkshark.domain.personalinformation.Person;
 import com.teameast.parkshark.domain.personalinformation.Address;
 import com.teameast.parkshark.domain.personalinformation.PostCode;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.teameast.parkshark.domain.parkinglots.ParkingLot.ParkingLotBuilder.parkingLotBuilder;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingLotTest {
     @Test

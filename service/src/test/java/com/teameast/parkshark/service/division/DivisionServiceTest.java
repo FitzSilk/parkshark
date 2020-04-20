@@ -1,13 +1,12 @@
 package com.teameast.parkshark.service.division;
 
-import com.teameast.parkshark.domain.Person;
+import com.teameast.parkshark.domain.personalinformation.Person;
 import com.teameast.parkshark.domain.division.Division;
 import com.teameast.parkshark.domain.division.DivisionRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.teameast.parkshark.domain.division.Division.DivisionBuilder.divisionBuilder;
-import static org.junit.jupiter.api.Assertions.*;
 
 class DivisionServiceTest {
 
