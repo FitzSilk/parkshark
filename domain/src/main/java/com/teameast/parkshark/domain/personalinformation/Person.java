@@ -1,17 +1,30 @@
 package com.teameast.parkshark.domain.personalinformation;
 
+import javax.persistence.*;
 import java.util.UUID;
-
+@Entity
+@Table(name="person")
 public class Person {
-
-    private String firstName;
-    private String password;
-    private String email;
+    @Id
     private String id;
 
-    public Person() {
-        this.id = UUID.randomUUID().toString();
-    }
+    @Column(name="firstname")
+    private String firstName;
+
+    @Column (name="lastname")
+    private String lastName;
+
+    @Transient
+    private String password;
+
+    @Column (name="email")
+    private String email;
+
+    @ManyToOne
+    @JoinColumn (name="address_id")
+    private Address address;
+
+    public Person(){}
 
     protected String getFirstName() {
         return firstName;
