@@ -1,5 +1,7 @@
 package com.teameast.parkshark.api.security;
 
+import com.teameast.parkshark.api.DivisionController;
+import com.teameast.parkshark.api.MemberController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -30,7 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.sessionManagement().sessionCreationPolicy(STATELESS);
         http.csrf().disable().authorizeRequests()
-               // .antMatchers(MemberController.USER_RESOURCE_PATH + "/**").permitAll()
+                .antMatchers(MemberController.MEMBER_RESOURCE_PATH + "/**").permitAll()
+                .antMatchers(DivisionController.DIVISION_RESOURCE_PATH + "/**").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic()
                 .authenticationEntryPoint(authEntryPoint)
