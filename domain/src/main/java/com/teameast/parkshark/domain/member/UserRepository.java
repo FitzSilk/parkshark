@@ -19,4 +19,8 @@ public class UserRepository {
     public Collection<? extends User> getAllUsers() {
         return userRepository.values();
     }
+
+    public void save(User user) {
+        userRepository.put(user.getId(), user);
+    }
 }
