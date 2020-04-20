@@ -1,6 +1,6 @@
 package com.teameast.parkshark.domain.member;
 
-import com.teameast.parkshark.domain.Person;
+import com.teameast.parkshark.domain.personalinformation.Person;
 import com.teameast.parkshark.domain.member.features.RoleType;
 
 public class User extends Person {

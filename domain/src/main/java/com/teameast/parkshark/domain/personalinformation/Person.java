@@ -1,4 +1,4 @@
-package com.teameast.parkshark.domain;
+package com.teameast.parkshark.domain.personalinformation;
 
 import java.util.UUID;
 

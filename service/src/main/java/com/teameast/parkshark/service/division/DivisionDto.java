@@ -1,6 +1,6 @@
 package com.teameast.parkshark.service.division;
 
-import com.teameast.parkshark.domain.Person;
+import com.teameast.parkshark.domain.personalinformation.Person;
 
 public class DivisionDto {
 
