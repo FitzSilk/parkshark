@@ -11,21 +11,13 @@ public class ParkingLot {
     private Address address;
     private double pricePerHour;
 
-
     public ParkingLot(ParkingLotBuilder parkingLotBuilder) {
-        checkForNulls(parkingLotBuilder);
         name = parkingLotBuilder.name;
         category = parkingLotBuilder.category;
         maxCapacity = parkingLotBuilder.maxCapacity;
         contactPerson = parkingLotBuilder.contactPerson;
         address = parkingLotBuilder.address;
         pricePerHour = parkingLotBuilder.pricePerHour;
-    }
-
-    private void checkForNulls(ParkingLotBuilder parkingLotBuilder) {
-        if(parkingLotBuilder.name==null || parkingLotBuilder.category==null || parkingLotBuilder.maxCapacity==0|| parkingLotBuilder.contactPerson==null ||parkingLotBuilder.address==null || parkingLotBuilder.pricePerHour==0){
-            throw new IllegalArgumentException("Put in something you moron!!!");
-        }
     }
 
     @Override
@@ -40,6 +32,30 @@ public class ParkingLot {
                 '}';
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
+
+    public Person getContactPerson() {
+        return contactPerson;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public double getPricePerHour() {
+        return pricePerHour;
+    }
+
     public static class ParkingLotBuilder {
         private String name;
         private String category;
@@ -47,6 +63,24 @@ public class ParkingLot {
         private Person contactPerson;
         private Address address;
         private double pricePerHour;
+
+        public static ParkingLotBuilder parkingLotBuilder() {
+            return new ParkingLotBuilder();
+        }
+
+        public ParkingLotBuilder() {
+        }
+
+        private void checkForNulls(ParkingLotBuilder parkingLotBuilder) {
+            if(parkingLotBuilder.name==null || parkingLotBuilder.category==null || parkingLotBuilder.maxCapacity==0|| parkingLotBuilder.contactPerson==null ||parkingLotBuilder.address==null || parkingLotBuilder.pricePerHour==0){
+                throw new IllegalArgumentException("Put in something you moron!!!");
+            }
+        }
+
+        public ParkingLot build(){
+            checkForNulls(this);
+            return new ParkingLot(this);
+        }
 
         public ParkingLotBuilder withName(String name) {
             this.name = name;
@@ -74,6 +108,7 @@ public class ParkingLot {
             this.pricePerHour=pricePerHour;
             return this;
         }
+
 
     }
 
