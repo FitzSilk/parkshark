@@ -41,4 +41,8 @@ public class Person {
     public String getId() {
         return id;
     }
+
+    public void setName(String firstName) {
+        this.firstName = firstName;
+    }
 }
