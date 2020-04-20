@@ -4,6 +4,8 @@ import com.teameast.parkshark.domain.division.DivisionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DivisionService {
 
@@ -20,4 +22,7 @@ public class DivisionService {
         return divisionMapper.toDto(divisionRepository.save(divisionMapper.toDivision(divisionDto)));
     }
 
+    public List<DivisionDto> getAllDivisions() {
+        return divisionMapper.toDto(divisionRepository.getAllDivisions());
+    }
 }

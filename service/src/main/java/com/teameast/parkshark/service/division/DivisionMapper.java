@@ -4,6 +4,7 @@ import com.teameast.parkshark.domain.division.Division;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.teameast.parkshark.domain.division.Division.DivisionBuilder.divisionBuilder;
@@ -15,7 +16,7 @@ public class DivisionMapper {
         return new DivisionDto(division.getId(), division.getName(), division.getOriginalName(), division.getDirector());
     }
 
-    public Collection<DivisionDto> toDto(Collection<Division> divisions) {
+    public List<DivisionDto> toDto(Collection<Division> divisions) {
         return divisions.stream()
                 .map(this::toDto)
                 .collect(Collectors.toList());
