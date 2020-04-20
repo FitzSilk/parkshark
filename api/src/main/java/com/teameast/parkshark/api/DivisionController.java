@@ -1,14 +1,15 @@
 package com.teameast.parkshark.api;
 
+import com.teameast.parkshark.domain.personalinformation.Person;
 import com.teameast.parkshark.service.division.DivisionDto;
 import com.teameast.parkshark.service.division.DivisionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = DivisionController.DIVISION_RESOURCE_PATH)
@@ -24,13 +25,20 @@ public class DivisionController {
     }
 
     @GetMapping(produces = "application/json")
-    public String sayHello() {
-        myLogger.info("someone visited this page");
-        return "hello";
+    public List<DivisionDto> getAllDivisions() {
+        myLogger.info("someone is trying to get all infos on divisions");
+        return divisionService.getAllDivisions();
     }
 
-    @PostMapping(consumes = "application/json", produces = "application/json")
-    public DivisionDto createDivision(DivisionDto divisionDto) {
+    @PostMapping(produces = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public DivisionDto createDivision(@RequestParam String name,
+                                      @RequestParam(name = "original_name") String originalName,
+                                      @RequestParam(name = "director_name") String directorName) {
+        myLogger.info("someone created a division here");
+        Person director = new Person();
+        director.setName(directorName);
+        DivisionDto divisionDto = new DivisionDto(1, name, originalName, director);
         return divisionService.create(divisionDto);
     }
 }
