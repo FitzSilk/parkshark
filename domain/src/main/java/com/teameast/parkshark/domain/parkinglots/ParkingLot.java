@@ -2,14 +2,40 @@ package com.teameast.parkshark.domain.parkinglots;
 
 import com.teameast.parkshark.domain.personalinformation.Person;
 import com.teameast.parkshark.domain.personalinformation.Address;
+import org.springframework.jca.cci.CannotGetCciConnectionException;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="parking_lot")
 public class ParkingLot {
+
+    @Id
+    private int id;
+
+    @Column (name="pl_name")
     private String name;
-    private String category;
+
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
+
+    @Column (name="max_capacity")
     private int maxCapacity;
+
+    @ManyToOne
+    @JoinColumn(name="contact_person_id")
     private Person contactPerson;
+
+    @ManyToOne
+    @JoinColumn(name="address_id")
     private Address address;
+
+    @Column (name="price_hour")
     private double pricePerHour;
+
+    public ParkingLot(){}
 
     public ParkingLot(ParkingLotBuilder parkingLotBuilder) {
         name = parkingLotBuilder.name;
@@ -36,7 +62,7 @@ public class ParkingLot {
         return name;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
@@ -58,7 +84,7 @@ public class ParkingLot {
 
     public static class ParkingLotBuilder {
         private String name;
-        private String category;
+        private Category category;
         private int maxCapacity;
         private Person contactPerson;
         private Address address;
@@ -87,7 +113,7 @@ public class ParkingLot {
             return this;
         }
 
-        public ParkingLotBuilder withCategory(String category) {
+        public ParkingLotBuilder withCategory(Category category) {
             this.category = category;
             return this;
         }
