@@ -5,7 +5,7 @@ begin;
 
 --set schema 'parkshark';
 --drop table if exists zip, person_address, person, allocations,
-    --division, parking_lot, category, parking_address, phone, members, membership_level cascade;
+  --  division, parking_lot, category, parking_address, phone, members, membership_level cascade;
 
 --drop schema parkshark;
 -- END UNCOMMENT
@@ -34,8 +34,7 @@ create table if not exists phone(
 );
 
 create table if not exists person(
-                                     person_id uuid primary key DEFAULT uuid_generate_v4 (),	-- auto-generated UUID
-    --person_id uuid not null primary key,	-- is an UUID
+                                     person_id serial not null primary key,
                                      firstname varchar(30) not null,
                                      lastname varchar(60) not null,
                                      address_id int not null,
@@ -76,9 +75,9 @@ create table if not exists parking_lot(
                                           division_id int not null,
                                           max_capacity int not null
                                               check (max_capacity > 0), -- must be positive value
-                                          contact_person_id uuid not null,  -- UUID of a person
+                                          contact_person_id int not null,  -- UUID of a person
                                           address_id int not null,
-                                          price_hour money not null,
+                                          price_hour float(2) not null,
                                           foreign key (category_id) references category(category_id),
                                           foreign key (division_id) references division(division_id),
                                           foreign key (contact_person_id) references person(person_id),
@@ -88,7 +87,7 @@ create table if not exists parking_lot(
 create table if not exists membership_level(
                                                level_id int not null primary key,
                                                level_name varchar(10) not null,
-                                               monthly_cost money not null,
+                                               monthly_cost float(2) not null,
                                                reduction_pct numeric(5,2) not null
                                                    check(reduction_pct>=0 and reduction_pct<=100),
                                                max_alloc_time int not null
@@ -96,7 +95,7 @@ create table if not exists membership_level(
 );
 
 create table if not exists members(
-                                      member_id uuid not null primary key DEFAULT uuid_generate_v4 (),  --auto-generated UUID ,
+                                      member_id serial not null primary key,  --auto-generated UUID ,
                                       firstname varchar(30) not null,
                                       lastname varchar(60) not null,
                                       address_id int not null,
@@ -112,13 +111,13 @@ create table if not exists members(
 );
 
 create table if not exists allocations(
-                                          allocation_id uuid not null primary key DEFAULT uuid_generate_v4 (),  --auto-generated UUID
+                                          allocation_id serial not null primary key,  --auto-generated UUID
                                           pl_id int not null,
-                                          member_id uuid not null,
+                                          member_id int not null,
                                           licence_plate varchar(15) not null,
                                           time_in timestamp not null,
                                           time_out timestamp default null,
-                                          amount_due money default null,
+                                          amount_due float(2) default null,
                                           is_active boolean default true,
                                           foreign key (pl_id) references parking_lot(pl_id),
                                           foreign key (member_id) references members(member_id)

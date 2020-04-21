@@ -38,7 +38,7 @@ public class DivisionController {
         myLogger.info("someone created a division here");
         Person director = new Person();
         director.setName(directorName);
-        DivisionDto divisionDto = new DivisionDto(1, name, originalName, director);
+        DivisionDto divisionDto = new DivisionDto(1, name, originalName, "director");
         return divisionService.create(divisionDto);
     }
 }

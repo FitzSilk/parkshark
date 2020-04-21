@@ -7,9 +7,9 @@ public class DivisionDto {
     private int id;
     private String name;
     private String originalName;
-    private Person director;
+    private String director;
 
-    public DivisionDto(int id, String name, String originalName, Person director) {
+    public DivisionDto(int id, String name, String originalName, String director) {
         this.id = id;
         this.name = name;
         this.originalName = originalName;
@@ -28,7 +28,7 @@ public class DivisionDto {
         return originalName;
     }
 
-    public Person getDirector() {
+    public String getDirector() {
         return director;
     }
 }

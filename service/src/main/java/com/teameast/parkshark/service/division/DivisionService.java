@@ -23,6 +23,6 @@ public class DivisionService {
     }
 
     public List<DivisionDto> getAllDivisions() {
-        return divisionMapper.toDto(divisionRepository.getAllDivisions());
+        return divisionMapper.toDto(divisionRepository.findAll());
     }
 }
