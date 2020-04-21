@@ -11,10 +11,11 @@ import static com.teameast.parkshark.domain.parkinglots.ParkingLot.ParkingLotBui
 class ParkingLotTest {
     @Test
     void whenCreatingParkingLot_ParkingExist() {
+        Category category=new Category();
         //GIVEN
         ParkingLot parkingLot = parkingLotBuilder()
                 .withName("OurParkingLotBuilder")
-                .withCategory("underground")
+                .withCategory(category)
                 .withMaxCapacity(100)
                 .withAddress(new Address("Avenue Paul Hymans", "71", new PostCode("Woluwe Saint Lambert)", "1200")))
                 .withContactPerson(new Person())
@@ -29,8 +30,9 @@ class ParkingLotTest {
 
     @Test
     void whenNotInsertingName_ThrowsError() {
+        Category category=new Category();
         Assertions.assertThatThrownBy(() -> parkingLotBuilder()
-                .withCategory("underground")
+                .withCategory(category)
                 .withMaxCapacity(100)
                 .withAddress(new Address("Avenue Paul Hymans", "71", new PostCode("Woluwe Saint Lambert)", "1200")))
                 .withContactPerson(new Person())
