@@ -18,7 +18,7 @@ public class ParkingLotService {
     }
 
     public List<ParkingLotDto> getAllParkingLot(){
-        return parkingLotRepository.getAllParkingLot().stream().map(p->parkingLotMapper.parkingLotToDto(p)).collect(Collectors.toList());
+        return parkingLotRepository.getAll().stream().map(p->parkingLotMapper.parkingLotToDto(p)).collect(Collectors.toList());
     }
 
 
