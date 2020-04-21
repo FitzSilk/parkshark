@@ -7,8 +7,16 @@ import javax.persistence.Id;
 @Entity
 public class Category {
     @Id
-    private int id;
+    private int category_id;
 
     @Column(name="category")
     private String category;
+
+    public Category(){
+
+    }
+
+    public Category(String name) {
+        this.category=name;
+    }
 }

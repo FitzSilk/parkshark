@@ -6,6 +6,8 @@ import com.teameast.parkshark.domain.personalinformation.PostCode;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+
 import static com.teameast.parkshark.domain.parkinglots.ParkingLot.ParkingLotBuilder.parkingLotBuilder;
 
 class ParkingLotTest {
@@ -19,7 +21,7 @@ class ParkingLotTest {
                 .withMaxCapacity(100)
                 .withAddress(new Address("Avenue Paul Hymans", "71", new PostCode("Woluwe Saint Lambert)", "1200")))
                 .withContactPerson(new Person())
-                .withPricePerHour(5.5)
+                .withPricePerHour(new BigDecimal("5.5"))
                 .build();
         //THEN
         Assertions.assertThat(parkingLot).isNotNull();
@@ -36,7 +38,7 @@ class ParkingLotTest {
                 .withMaxCapacity(100)
                 .withAddress(new Address("Avenue Paul Hymans", "71", new PostCode("Woluwe Saint Lambert)", "1200")))
                 .withContactPerson(new Person())
-                .withPricePerHour(5.5)
+                .withPricePerHour(new BigDecimal("5.5"))
                 .build()).isInstanceOf(IllegalArgumentException.class);
     }
 }
