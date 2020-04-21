@@ -12,13 +12,22 @@ public class ParkingLotService {
     private ParkingLotRepository parkingLotRepository;
     private ParkingLotMapper parkingLotMapper;
 
+    public ParkingLotService(ParkingLotRepository parkingLotRepository, ParkingLotMapper parkingLotMapper) {
+        this.parkingLotRepository = parkingLotRepository;
+        this.parkingLotMapper = parkingLotMapper;
+    }
+
     public ParkingLotDto create (ParkingLotDto parkingLotDto){
-        parkingLotRepository.save(parkingLotMapper.parkingLotDtoToParkingLot(parkingLotDto));
-        return parkingLotDto;
+
+        return parkingLotMapper.parkingLotToDto(parkingLotRepository.save(parkingLotMapper.parkingLotDtoToParkingLot(parkingLotDto)));
+
     }
 
     public List<ParkingLotDto> getAllParkingLot(){
-        return parkingLotRepository.getAll().stream().map(p->parkingLotMapper.parkingLotToDto(p)).collect(Collectors.toList());
+        return parkingLotRepository.findAll()
+                .stream()
+                .map(p->parkingLotMapper.parkingLotToDto(p))
+                .collect(Collectors.toList());
     }
 
 

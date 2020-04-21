@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table (name="parking_address")
 public class Address {
     @Id
-    private int id;
+    private int parking_address_id;
 
     @Column (name="parking_street")
     private String streetName;
@@ -26,6 +26,22 @@ public class Address {
         this.postCode = postCode;
     }
     public Address(){}
+
+    public int getParking_address_id() {
+        return parking_address_id;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public PostCode getPostCode() {
+        return postCode;
+    }
 
     @Override
     public String toString() {

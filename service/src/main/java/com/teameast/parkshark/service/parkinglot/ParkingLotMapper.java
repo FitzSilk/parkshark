@@ -1,7 +1,9 @@
 package com.teameast.parkshark.service.parkinglot;
 
 import com.teameast.parkshark.domain.parkinglots.ParkingLot;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ParkingLotMapper {
 
     public ParkingLotDto parkingLotToDto(ParkingLot parkingLot) {

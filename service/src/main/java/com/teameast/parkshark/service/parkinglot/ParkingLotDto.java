@@ -4,6 +4,8 @@ import com.teameast.parkshark.domain.parkinglots.Category;
 import com.teameast.parkshark.domain.personalinformation.Address;
 import com.teameast.parkshark.domain.personalinformation.Person;
 
+import java.math.BigDecimal;
+
 
 public class ParkingLotDto {
 
@@ -13,9 +15,22 @@ public class ParkingLotDto {
     private int maxCapacity;
     private Person contactPerson;
     private Address address;
-    private double pricePerHour;
+    private BigDecimal pricePerHour;
 
-    public ParkingLotDto(int id, String name, Category category, int maxCapacity, Person contactPerson, Address address, double pricePerHour) {
+    public ParkingLotDto(){
+
+    }
+
+    public ParkingLotDto(String name, Category category, int maxCapacity, Person contactPerson, Address address, BigDecimal pricePerHour){
+        this.name = name;
+        this.category = category;
+        this.maxCapacity = maxCapacity;
+        this.contactPerson = contactPerson;
+        this.address = address;
+        this.pricePerHour = pricePerHour;
+    }
+
+    public ParkingLotDto(int id, String name, Category category, int maxCapacity, Person contactPerson, Address address, BigDecimal pricePerHour) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -49,7 +64,7 @@ public class ParkingLotDto {
         return address;
     }
 
-    public double getPricePerHour() {
+    public BigDecimal getPricePerHour() {
         return pricePerHour;
     }
 }
