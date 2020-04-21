@@ -9,8 +9,8 @@ import java.util.List;
 @Service
 public class DivisionService {
 
-    private DivisionRepository divisionRepository;
-    private DivisionMapper divisionMapper;
+    private final DivisionRepository divisionRepository;
+    private final DivisionMapper divisionMapper;
 
     @Autowired
     public DivisionService(DivisionRepository divisionRepository, DivisionMapper divisionMapper) {
@@ -18,8 +18,8 @@ public class DivisionService {
         this.divisionMapper = divisionMapper;
     }
 
-    public DivisionDto create(DivisionDto divisionDto) {
-        return divisionMapper.toDto(divisionRepository.save(divisionMapper.toDivision(divisionDto)));
+    public DivisionDto create(String name, String originalName, String director) {
+        return divisionMapper.toDto(divisionRepository.save(divisionMapper.toDivision(name, originalName, director)));
     }
 
     public List<DivisionDto> getAllDivisions() {

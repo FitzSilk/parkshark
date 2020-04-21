@@ -1,8 +1,5 @@
 package com.teameast.parkshark.domain.division;
 
-import com.teameast.parkshark.domain.personalinformation.Person;
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 
 @Table
