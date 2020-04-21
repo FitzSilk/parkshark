@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class Division {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer division_id;
 
     @Column(name = "division_name")
@@ -29,10 +30,6 @@ public class Division {
         name = divisionBuilder.getName();
         originalName = divisionBuilder.getOriginalName();
         director = divisionBuilder.getDirector();
-    }
-
-    public void setId(Integer id) {
-        this.division_id = id;
     }
 
     public Integer getId() {

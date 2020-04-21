@@ -37,7 +37,8 @@ class DivisionMapperTest {
         //WHEN
         DivisionDto actualResult = divisionMapper.toDto(division);
         //THEN
-        Assertions.assertThat(actualResult.getId() == 1);
+//        Commenting this because testing no id in Dto.
+//        Assertions.assertThat(actualResult.getId() == 1);
         Assertions.assertThat(actualResult.getOriginalName().equals("Pre-division"));
     }
 

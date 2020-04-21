@@ -13,7 +13,7 @@ import static com.teameast.parkshark.domain.division.Division.DivisionBuilder.di
 public class DivisionMapper {
 
     public DivisionDto toDto(Division division) {
-        return new DivisionDto(division.getId(), division.getName(), division.getOriginalName(), division.getDirector());
+        return new DivisionDto(division.getName(), division.getOriginalName(), division.getDirector());
     }
 
     public List<DivisionDto> toDto(Collection<Division> divisions) {
@@ -24,7 +24,6 @@ public class DivisionMapper {
 
     public Division toDivision(DivisionDto divisionDto) {
         return new Division(divisionBuilder()
-                .withId(divisionDto.getId())
                 .withName(divisionDto.getName())
                 .withOriginalName(divisionDto.getOriginalName())
                 .withDirector(divisionDto.getDirector())

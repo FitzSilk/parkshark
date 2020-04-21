@@ -36,9 +36,7 @@ public class DivisionController {
                                       @RequestParam(name = "original_name") String originalName,
                                       @RequestParam(name = "director_name") String directorName) {
         myLogger.info("someone created a division here");
-        Person director = new Person();
-        director.setName(directorName);
-        DivisionDto divisionDto = new DivisionDto(1, name, originalName, "director");
+        DivisionDto divisionDto = new DivisionDto(name, originalName, directorName);
         return divisionService.create(divisionDto);
     }
 }
