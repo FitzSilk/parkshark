@@ -1,6 +1,8 @@
 package com.teameast.parkshark.service.division;
 
+import com.teameast.parkshark.domain.division.Division;
 import com.teameast.parkshark.domain.division.DivisionRepository;
+import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +26,9 @@ public class DivisionService {
 
     public List<DivisionDto> getAllDivisions() {
         return divisionMapper.toDto(divisionRepository.findAll());
+    }
+
+    public DivisionDto getDivisionById(int id) {
+        return divisionMapper.toDto(divisionRepository.findById(id).orElseThrow());
     }
 }

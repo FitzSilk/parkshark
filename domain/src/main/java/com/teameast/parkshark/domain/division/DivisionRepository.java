@@ -11,4 +11,5 @@ public interface DivisionRepository extends CrudRepository<Division, Integer> {
     Division save(Division newDivision);
 
     Collection<Division> findAll();
+
 }

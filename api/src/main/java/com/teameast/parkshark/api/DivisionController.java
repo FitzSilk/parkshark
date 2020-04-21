@@ -1,6 +1,5 @@
 package com.teameast.parkshark.api;
 
-import com.teameast.parkshark.domain.personalinformation.Person;
 import com.teameast.parkshark.service.division.DivisionDto;
 import com.teameast.parkshark.service.division.DivisionService;
 import org.slf4j.Logger;
@@ -28,6 +27,12 @@ public class DivisionController {
     public List<DivisionDto> getAllDivisions() {
         myLogger.info("someone is trying to get all infos on divisions");
         return divisionService.getAllDivisions();
+    }
+
+    @GetMapping(path = "/id", produces = "application/json")
+    public DivisionDto getDivisionById(@RequestParam int id) {
+        myLogger.info("someone try to get informations on one division, here.");
+        return divisionService.getDivisionById(id);
     }
 
     @PostMapping(produces = "application/json")
