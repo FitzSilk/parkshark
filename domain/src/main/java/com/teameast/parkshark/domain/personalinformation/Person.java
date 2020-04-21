@@ -26,6 +26,9 @@ public class Person {
 
     public Person(){}
 
+    public Person(String firstName){
+        this.firstName=firstName;
+    }
     protected String getFirstName() {
         return firstName;
     }
