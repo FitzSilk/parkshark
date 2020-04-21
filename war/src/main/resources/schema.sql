@@ -1,15 +1,13 @@
-
-
 begin;
 
 -- UNCOMMENT THESE LINES TO RESET THIS DB
 --***************************************
 
-set schema 'parkshark';
-drop table if exists zip, person_address, person, allocations,
-    division, parking_lot, category, parking_address, phone, members, membership_level cascade;
+--set schema 'parkshark';
+--drop table if exists zip, person_address, person, allocations,
+    --division, parking_lot, category, parking_address, phone, members, membership_level cascade;
 
-drop schema parkshark;
+--drop schema parkshark;
 -- END UNCOMMENT
 --**************
 
