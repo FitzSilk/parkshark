@@ -81,6 +81,7 @@ public class UserDto {
         private String firstName;
         private String lastName;
         private int licencePlate;
+        private String licencePlateCountry;
         private String email;
         private PhoneNumber phoneNumber;
         private LocalDate registrationDate;
@@ -120,6 +121,11 @@ public class UserDto {
 
         public UserDtoBuilder withLicencePlate(int licencePlate) {
             this.licencePlate = licencePlate;
+            return this;
+        }
+
+        public UserDtoBuilder withLicencePlateCountry(String licencePlateCountry) {
+            this.licencePlateCountry = licencePlateCountry;
             return this;
         }
 
@@ -168,6 +174,10 @@ public class UserDto {
 
         public int getAddress() {
             return address;
+        }
+
+        public String getLicencePlateCountry() {
+            return licencePlateCountry;
         }
     }
 }

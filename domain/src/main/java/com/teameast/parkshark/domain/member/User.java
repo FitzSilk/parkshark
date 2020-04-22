@@ -22,6 +22,9 @@ public class User {
     @Column(name = "licence_plate")
     private int licencePlate;
 
+    @Column(name = "licence_plate_country")
+    private String licencePlateCountry;
+
     @Column(name = "email")
     private String email;
 
@@ -48,6 +51,7 @@ public class User {
         this.firstName = userBuilder.getFirstName();
         this.lastName = userBuilder.getLastName();
         this.licencePlate = userBuilder.getLicencePlate();
+        this.licencePlateCountry = userBuilder.getLicencePlateCountry();
         this.email = userBuilder.getEmail();
         this.address = userBuilder.getAddress();
         this.registrationDate = userBuilder.getRegistrationDate();
@@ -94,6 +98,10 @@ public class User {
         return registrationDate;
     }
 
+    public String getLicencePlateCountry() {
+        return licencePlateCountry;
+    }
+
     public static class UserBuilder {
 
         private int id;
@@ -104,6 +112,7 @@ public class User {
         private PhoneNumber phoneNumber;
         private LocalDate registrationDate;
         private int address;
+        private String licencePlateCountry;
 
         protected UserBuilder() {
 
@@ -157,6 +166,11 @@ public class User {
             return this;
         }
 
+        public UserBuilder withLicencePlateCountry(String licencePlateCountry) {
+            this.licencePlateCountry = licencePlateCountry;
+            return this;
+        }
+
         public int getId() {
             return id;
         }
@@ -187,6 +201,10 @@ public class User {
 
         public int getAddress() {
             return address;
+        }
+
+        public String getLicencePlateCountry() {
+            return licencePlateCountry;
         }
     }
 }

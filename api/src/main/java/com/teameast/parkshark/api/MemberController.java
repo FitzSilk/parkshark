@@ -5,10 +5,8 @@ import com.teameast.parkshark.service.member.UserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -34,6 +32,19 @@ public class MemberController {
     public UserDto getMemberById(@RequestParam int id) {
         myLogger.info("someone try to get informations on a user");
         return memberService.getMemberById(id);
+    }
+
+    @PostMapping(produces = "application/json")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public UserDto saveMember(@RequestParam String firstName,
+                              @RequestParam String lastName,
+                              @RequestParam int licencePlate,
+                              @RequestParam String licencePlateCountry,
+                              @RequestParam String email,
+                              @RequestParam int address,
+                              @RequestParam String phoneNumber) {
+        myLogger.info("someone is trying to register here!");
+        return memberService.saveMember(firstName, lastName, licencePlate, licencePlateCountry, email, address, phoneNumber);
     }
 
 }

@@ -2,10 +2,7 @@ package com.teameast.parkshark.domain.phone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -13,7 +10,8 @@ import java.util.Objects;
 public class PhoneNumber {
 
     @Id
-    private int phone_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer phone_id;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -22,12 +20,16 @@ public class PhoneNumber {
     public PhoneNumber() {
     }
 
-    public int getPhone_id() {
+    public Integer getPhone_id() {
         return phone_id;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public PhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override

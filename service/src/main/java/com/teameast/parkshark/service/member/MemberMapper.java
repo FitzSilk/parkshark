@@ -1,8 +1,10 @@
 package com.teameast.parkshark.service.member;
 
 import com.teameast.parkshark.domain.member.User;
+import com.teameast.parkshark.domain.phone.PhoneNumber;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,15 +15,16 @@ import static com.teameast.parkshark.service.member.UserDto.UserDtoBuilder.userD
 @Component
 public class MemberMapper {
 
-    public User toUser(UserDto userDto) {
+    public User toUser(String firstName, String lastName, int licencePlate, String licencePlateCountry, String email, int address, PhoneNumber phoneNumber) {
         return new User(userBuilder()
-                .withFirstName(userDto.getFirstName())
-                .withLastName(userDto.getLastName())
-                .withAddress(userDto.getAddress())
-                .withEmail(userDto.getEmail())
-                .withLicencePlate(userDto.getLicencePlate())
-                .withPhoneNumber(userDto.getPhoneNumber())
-                .withRegistrationDate(userDto.getRegistrationDate())
+                .withFirstName(firstName)
+                .withLastName(lastName)
+                .withAddress(address)
+                .withEmail(email)
+                .withLicencePlate(licencePlate)
+                .withLicencePlateCountry(licencePlateCountry)
+                .withPhoneNumber(phoneNumber)
+                .withRegistrationDate(LocalDate.now())
         );
     }
 
@@ -32,6 +35,7 @@ public class MemberMapper {
                 .withEmail(user.getEmail())
                 .withAddress(user.getAddress())
                 .withLicencePlate(user.getLicencePlate())
+                .withLicencePlateCountry(user.getLicencePlateCountry())
                 .withPhoneNumber(user.getPhoneNumber())
                 .withRegistrationDate(user.getRegistrationDate())
         );
