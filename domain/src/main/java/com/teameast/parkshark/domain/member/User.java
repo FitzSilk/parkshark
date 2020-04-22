@@ -71,6 +71,26 @@ public class User {
         return email;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getAddress() {
+        return address;
+    }
+
+    public int getLicencePlate() {
+        return licencePlate;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
+
     public static class UserBuilder {
 
         private int id;

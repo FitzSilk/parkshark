@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.teameast.parkshark.domain.member.User.UserBuilder.userBuilder;
+import static com.teameast.parkshark.service.member.UserDto.UserDtoBuilder.userDtoBuilder;
 
 @Component
 public class MemberMapper {
@@ -25,7 +26,15 @@ public class MemberMapper {
     }
 
     public UserDto toDto(User user) {
-        return null;
+        return new UserDto(userDtoBuilder()
+                .withFirstName(user.getFirstName())
+                .withLastName(user.getLastName())
+                .withEmail(user.getEmail())
+                .withAddress(user.getAddress())
+                .withLicencePlate(user.getLicencePlate())
+                .withPhoneNumber(user.getPhoneNumber())
+                .withRegistrationDate(user.getRegistrationDate())
+        );
     }
 
     public List<UserDto> toDto(Collection<User> users) {

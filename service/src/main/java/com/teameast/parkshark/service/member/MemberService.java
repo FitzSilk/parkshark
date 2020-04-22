@@ -4,6 +4,8 @@ import com.teameast.parkshark.domain.member.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 public class MemberService {
 
@@ -14,5 +16,10 @@ public class MemberService {
     public MemberService(UserRepository userRepository, MemberMapper memberMapper) {
         this.userRepository = userRepository;
         this.memberMapper = memberMapper;
+    }
+
+
+    public Collection<UserDto> getAllMembers() {
+        return memberMapper.toDto(userRepository.findAll());
     }
 }
