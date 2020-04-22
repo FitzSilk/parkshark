@@ -20,10 +20,10 @@ public class ParkingLot {
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="category_id")
     private Category category;
-
+*/
     @Column (name="max_capacity")
-    private int maxCapacity;
-
+    private Integer maxCapacity;
+/*
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="contact_person_id")
     private Person contactPerson;
@@ -39,9 +39,9 @@ public class ParkingLot {
 
     public ParkingLot(ParkingLotBuilder parkingLotBuilder) {
         name = parkingLotBuilder.name;
-/*        category = parkingLotBuilder.category;
+/*        category = parkingLotBuilder.category;*/
         maxCapacity = parkingLotBuilder.maxCapacity;
-        contactPerson = parkingLotBuilder.contactPerson;
+        /*contactPerson = parkingLotBuilder.contactPerson;
         address = parkingLotBuilder.address;
         pricePerHour = parkingLotBuilder.pricePerHour;*/
     }
@@ -57,11 +57,11 @@ public class ParkingLot {
     public Category getCategory() {
         return category;
     }
-
-    public int getMaxCapacity() {
+*/
+    public Integer getMaxCapacity() {
         return maxCapacity;
     }
-
+/*
     public Person getContactPerson() {
         return contactPerson;
     }
@@ -77,7 +77,7 @@ public class ParkingLot {
     public static class ParkingLotBuilder {
         private String name;
         private Category category;
-        private int maxCapacity;
+        private Integer maxCapacity;
         private Person contactPerson;
         private Address address;
         private BigDecimal pricePerHour;
@@ -110,7 +110,7 @@ public class ParkingLot {
             return this;
         }
 
-        public ParkingLotBuilder withMaxCapacity(int maxCapacity){
+        public ParkingLotBuilder withMaxCapacity(Integer maxCapacity){
             this.maxCapacity=maxCapacity;
             return this;
         }

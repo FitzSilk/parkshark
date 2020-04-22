@@ -10,6 +10,7 @@ import com.teameast.parkshark.service.parkinglot.ParkingLotMapper;
 import com.teameast.parkshark.service.parkinglot.ParkingLotService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class ParkingLotController {
     }
 
     @PostMapping(produces ="application/json", consumes="application/json")
+    @ResponseStatus(HttpStatus.CREATED)
     public ParkingLotDto createParkingLot(@RequestBody ParkingLotDto parkingLotDto){
         myLogger.info("someone added a parking lot");
         return parkingLotService.create(parkingLotDto);
