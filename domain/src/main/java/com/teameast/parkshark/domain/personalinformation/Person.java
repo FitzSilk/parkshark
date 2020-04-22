@@ -1,12 +1,14 @@
 package com.teameast.parkshark.domain.personalinformation;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.util.UUID;
 @Entity
-@Table(name="person")
+@Table(name="PERSON")
 public class Person {
     @Id
-    private String id;
+    private UUID person_id;
 
     @Column(name="firstname")
     private String firstName;
@@ -24,7 +26,20 @@ public class Person {
     @JoinColumn (name="address_id")
     private Address address;
 
+    @JoinColumn(name ="phone_id")
+    @Nullable
+    private Integer fixPhoneNumber;
+
+    @JoinColumn(name = "phone_id")
+    @Nullable
+    private Integer mobilePhoneNumber;
+
     public Person(){}
+
+    public Person(String firstName){
+        this.firstName=firstName;
+    }
+
 
     protected String getFirstName() {
         return firstName;
@@ -39,7 +54,7 @@ public class Person {
     }
 
     public String getId() {
-        return id;
+        return person_id.toString();
     }
 
     public void setName(String firstName) {

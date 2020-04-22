@@ -1,61 +1,53 @@
 package com.teameast.parkshark.domain.parkinglots;
 
-import com.teameast.parkshark.domain.personalinformation.Person;
 import com.teameast.parkshark.domain.personalinformation.Address;
-import org.springframework.jca.cci.CannotGetCciConnectionException;
-import org.springframework.transaction.annotation.Transactional;
+import com.teameast.parkshark.domain.personalinformation.Person;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name="parking_lot")
 public class ParkingLot {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int pl_id;
 
     @Column (name="pl_name")
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name="category_id")
     private Category category;
 
     @Column (name="max_capacity")
-    private int maxCapacity;
-
-    @ManyToOne
+    private Integer maxCapacity;
+/*
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="contact_person_id")
     private Person contactPerson;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="address_id")
     private Address address;
 
     @Column (name="price_hour")
-    private double pricePerHour;
-
+    private BigDecimal pricePerHour;
+*/
     public ParkingLot(){}
 
     public ParkingLot(ParkingLotBuilder parkingLotBuilder) {
         name = parkingLotBuilder.name;
         category = parkingLotBuilder.category;
         maxCapacity = parkingLotBuilder.maxCapacity;
-        contactPerson = parkingLotBuilder.contactPerson;
+        /*contactPerson = parkingLotBuilder.contactPerson;
         address = parkingLotBuilder.address;
-        pricePerHour = parkingLotBuilder.pricePerHour;
+        pricePerHour = parkingLotBuilder.pricePerHour;*/
     }
 
-    @Override
-    public String toString() {
-        return "ParkingLot{" +
-                "name='" + name + '\'' +
-                ", category='" + category + '\'' +
-                ", maxCapacity=" + maxCapacity +
-                ", contactPerson=" + contactPerson +
-                ", address=" + address +
-                ", pricePerHour=" + pricePerHour +
-                '}';
+    public int getId() {
+        return pl_id;
     }
 
     public String getName() {
@@ -66,10 +58,10 @@ public class ParkingLot {
         return category;
     }
 
-    public int getMaxCapacity() {
+    public Integer getMaxCapacity() {
         return maxCapacity;
     }
-
+/*
     public Person getContactPerson() {
         return contactPerson;
     }
@@ -78,17 +70,17 @@ public class ParkingLot {
         return address;
     }
 
-    public double getPricePerHour() {
+    public BigDecimal getPricePerHour() {
         return pricePerHour;
     }
-
+*/
     public static class ParkingLotBuilder {
         private String name;
         private Category category;
-        private int maxCapacity;
+        private Integer maxCapacity;
         private Person contactPerson;
         private Address address;
-        private double pricePerHour;
+        private BigDecimal pricePerHour;
 
         public static ParkingLotBuilder parkingLotBuilder() {
             return new ParkingLotBuilder();
@@ -98,13 +90,13 @@ public class ParkingLot {
         }
 
         private void checkForNulls(ParkingLotBuilder parkingLotBuilder) {
-            if(parkingLotBuilder.name==null || parkingLotBuilder.category==null || parkingLotBuilder.maxCapacity==0|| parkingLotBuilder.contactPerson==null ||parkingLotBuilder.address==null || parkingLotBuilder.pricePerHour==0){
+            if(parkingLotBuilder.name==null || parkingLotBuilder.category==null || parkingLotBuilder.maxCapacity==0|| parkingLotBuilder.contactPerson==null ||parkingLotBuilder.address==null || parkingLotBuilder.pricePerHour==null){
                 throw new IllegalArgumentException("Put in something you moron!!!");
             }
         }
 
         public ParkingLot build(){
-            checkForNulls(this);
+            //checkForNulls(this);
             return new ParkingLot(this);
         }
 
@@ -118,7 +110,7 @@ public class ParkingLot {
             return this;
         }
 
-        public ParkingLotBuilder withMaxCapacity(int maxCapacity){
+        public ParkingLotBuilder withMaxCapacity(Integer maxCapacity){
             this.maxCapacity=maxCapacity;
             return this;
         }
@@ -130,7 +122,7 @@ public class ParkingLot {
             this.address=address;
             return this;
         }
-        public ParkingLotBuilder withPricePerHour(double pricePerHour){
+        public ParkingLotBuilder withPricePerHour(BigDecimal pricePerHour){
             this.pricePerHour=pricePerHour;
             return this;
         }
