@@ -6,11 +6,11 @@ begin;
 -- -- UNCOMMENT THESE LINES TO RESET THIS DB
 -- --***************************************
 
--- --set schema 'parkshark';
--- --drop table if exists zip, person_address, person, allocations,
---     --division, parking_lot, category, parking_address, phone, members, membership_level cascade;
+set schema 'parkshark';
+drop table if exists zip, person_address, person, allocations,
+     division, parking_lot, category, parking_address, phone, members, membership_level cascade;
 
--- --drop schema parkshark;
+drop schema parkshark;
 -- -- END UNCOMMENT
 -- --**************
 
@@ -59,10 +59,10 @@ set schema 'parkshark';
 --                                        foreign key (parent_division_id) references division(division_id)
 -- );
 
--- create table if not exists category(
---                                        category_id serial not null primary key,
---                                        category varchar(50) not null
--- );
+create table if not exists category(
+                                        category_id serial not null primary key,
+	                                    category varchar(50)
+ );
 
 -- create table if not exists parking_address(
 --                                               parking_address_id serial not null primary key,
@@ -81,8 +81,8 @@ create table if not exists parking_lot(
 --                                               check (max_capacity > 0), -- must be positive value
                                            contact_person_id varchar,  -- UUID of a person
                                            address_id int,
-                                           price_hour numeric(5,2) --- 3.23  25.23 25.3 365.2 
---                                           foreign key (category_id) references category(category_id),
+                                           price_hour numeric(5,2),
+                                           foreign key (category_id) references category(category_id)
 --                                           foreign key (division_id) references division(division_id),
 --                                           foreign key (contact_person_id) references person(person_id),
 --                                           foreign key (address_id) references parking_address(parking_address_id)
@@ -126,6 +126,8 @@ create table if not exists parking_lot(
 --                                           foreign key (pl_id) references parking_lot(pl_id),
 --                                           foreign key (member_id) references members(member_id)
 -- );
+
+-- rollback;
 
 commit;
 
