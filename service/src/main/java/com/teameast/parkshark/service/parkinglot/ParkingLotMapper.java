@@ -5,6 +5,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ParkingLotMapper {
+    private final CategoryMapper categoryMapper;
+
+    public ParkingLotMapper(CategoryMapper categoryMapper) {
+        this.categoryMapper = categoryMapper;
+    }
 
     public ParkingLotDto parkingLotToDto(ParkingLot parkingLot) {
 

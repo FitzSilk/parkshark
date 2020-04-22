@@ -5,6 +5,7 @@ import com.teameast.parkshark.domain.parkinglots.ParkingLot;
 import com.teameast.parkshark.domain.personalinformation.Address;
 import com.teameast.parkshark.domain.personalinformation.Person;
 import com.teameast.parkshark.domain.personalinformation.PostCode;
+import com.teameast.parkshark.service.parkinglot.CategoryMapper;
 import com.teameast.parkshark.service.parkinglot.ParkingLotDto;
 import com.teameast.parkshark.service.parkinglot.ParkingLotMapper;
 import com.teameast.parkshark.service.parkinglot.ParkingLotService;
@@ -24,7 +25,6 @@ public class ParkingLotController {
     private ParkingLotService parkingLotService;
 
     public ParkingLotController(ParkingLotService parkingLotService) {
-
         this.parkingLotService = parkingLotService;
     }
 
@@ -40,7 +40,8 @@ public class ParkingLotController {
     @ResponseStatus(HttpStatus.CREATED)
     public ParkingLotDto createParkingLot(@RequestBody ParkingLotDto parkingLotDto){
         myLogger.info("someone added a parking lot");
-        return parkingLotService.create(parkingLotDto);
+
+       return parkingLotService.create(parkingLotDto);
     }
 
 

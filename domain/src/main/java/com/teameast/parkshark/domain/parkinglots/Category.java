@@ -9,15 +9,14 @@ public class Category {
     @Id
     @Column (name="category_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name="category")
     private String category;
 
     public Category(){}
 
-    public Category(int id, String category) {
-        this.id=id;
+    public Category(String category) {
         this.category=category;
     }
 
@@ -32,5 +31,13 @@ public class Category {
     @Override
     public int hashCode() {
         return Objects.hash(category);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getCategory() {
+        return category;
     }
 }

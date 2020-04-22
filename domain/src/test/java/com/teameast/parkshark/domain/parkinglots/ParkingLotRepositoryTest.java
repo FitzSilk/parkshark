@@ -20,7 +20,7 @@ class ParkingLotRepositoryTest {
 
     @Test
     void givenAParkingLot_ThenCreateParkingLot(){
-      /* Category category=new Category("underground");
+      /*Category category=new Category("underground");
         ParkingLot parkingLot=ParkingLot.ParkingLotBuilder.parkingLotBuilder().withName("aParkingLot")
                 .withCategory(category).withMaxCapacity(100).withContactPerson(new Person("Bob"))
                 .withAddress(new Address("streetname","streetnumber",new PostCode("Bruxelles","1180"))).withPricePerHour(new BigDecimal("5.5")).build();
