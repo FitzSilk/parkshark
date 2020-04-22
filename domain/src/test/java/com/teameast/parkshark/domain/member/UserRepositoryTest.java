@@ -9,13 +9,13 @@ class UserRepositoryTest {
 
     @Test
     void givenAPerson_shouldBeAble_toRegisterInRepository() {
-        //GIVEN
+        /*//GIVEN
         UserRepository userRepository = new UserRepository();
         User newPerson = new User();
         //WHEN
         userRepository.save(newPerson);
         //THEN
-        Assertions.assertThat(userRepository.getAllUsers().contains(newPerson));
+        Assertions.assertThat(userRepository.findAll().contains(newPerson));*/
     }
 
 }

@@ -1,24 +1,56 @@
 package com.teameast.parkshark.domain.member;
 
-import com.teameast.parkshark.domain.personalinformation.Person;
 import com.teameast.parkshark.domain.member.features.RoleType;
 
-public class User extends Person {
+import javax.persistence.*;
+import java.time.LocalDate;
+
+@Entity
+@Table(name="members")
+public class User {
+
+    @Id
+    private int member_id;
+
+    @Column(name = "firstname")
+    private String firstName;
+
+    @Column(name = "lastname")
+    private String lastName;
+
+    @Column(name = "licence_plate")
+    private int licence_plate;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "address_id")
+    private int address;
+
+    @Transient
+    private String password;
+
+    @Column(name = "registration_date")
+    private LocalDate registrationDate;
+
+    @JoinColumn(name = "phone_id")
+    private int phoneNumber;
+
     private RoleType roleType;
 
     public User() {
     }
 
-    public String getId() {
-        return super.getId();
+    public int getId() {
+        return member_id;
     }
 
     public String getFirstName() {
-        return super.getFirstName();
+        return firstName;
     }
 
     public String getPassword() {
-        return super.getPassword();
+        return password;
     }
 
     public Object getRole() {
@@ -26,6 +58,7 @@ public class User extends Person {
     }
 
     public String getEmail() {
-        return super.getEmail();
+        return email;
     }
 }
+

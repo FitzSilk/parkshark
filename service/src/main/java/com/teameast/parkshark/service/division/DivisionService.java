@@ -1,8 +1,6 @@
 package com.teameast.parkshark.service.division;
 
-import com.teameast.parkshark.domain.division.Division;
 import com.teameast.parkshark.domain.division.DivisionRepository;
-import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
