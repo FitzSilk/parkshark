@@ -36,12 +36,14 @@ public class MemberService {
 
     public UserDto saveMember(String firstName, String lastName, int licencePlate, String licencePlateCountry, String email, int address, String phoneNumber) {
         List<String> phoneBank = phoneRepository.findAll().stream().map(PhoneNumber::getPhoneNumber).collect(Collectors.toList());
-        PhoneNumber phoneNumber1 = phoneRepository.save(new PhoneNumber(phoneNumber));
+        PhoneNumber phoneNumber1 = new PhoneNumber(phoneNumber);
+        PhoneNumber savedPhone = phoneRepository.save(phoneNumber1);
         /*if (phoneBank.contains(phoneNumber)) {
             phoneNumber1 = phoneRepository.findById(phoneRepository.findByValue(phoneNumber)).orElseThrow();
         } else {
-            phoneNumber1 = phoneRepository.save(new PhoneNumber(phoneNumber));
+            PhoneNumber tempPhoneNumber = new PhoneNumber(phoneNumber);
+            phoneNumber1 = phoneRepository.save(tempPhoneNumber);
         }*/
-        return memberMapper.toDto(userRepository.save(memberMapper.toUser(firstName, lastName, licencePlate, licencePlateCountry, email, address, phoneNumber1)));
+        return memberMapper.toDto(userRepository.save(memberMapper.toUser(firstName, lastName, licencePlate, licencePlateCountry, email, address, savedPhone)));
     }
 }
