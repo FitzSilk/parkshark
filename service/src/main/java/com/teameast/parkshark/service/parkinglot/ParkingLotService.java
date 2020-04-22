@@ -18,7 +18,7 @@ public class ParkingLotService {
     }
 
     public ParkingLotDto create (ParkingLotDto parkingLotDto){
-
+        //CategoryRepository.save(parkingLotDto.getCategory());
         return parkingLotMapper.parkingLotToDto(parkingLotRepository.save(parkingLotMapper.parkingLotDtoToParkingLot(parkingLotDto)));
 
     }

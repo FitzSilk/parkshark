@@ -16,11 +16,11 @@ public class ParkingLot {
 
     @Column (name="pl_name")
     private String name;
-/*
-    @ManyToOne(cascade=CascadeType.ALL)
+
+    @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name="category_id")
     private Category category;
-*/
+
     @Column (name="max_capacity")
     private Integer maxCapacity;
 /*
@@ -39,7 +39,7 @@ public class ParkingLot {
 
     public ParkingLot(ParkingLotBuilder parkingLotBuilder) {
         name = parkingLotBuilder.name;
-/*        category = parkingLotBuilder.category;*/
+        category = parkingLotBuilder.category;
         maxCapacity = parkingLotBuilder.maxCapacity;
         /*contactPerson = parkingLotBuilder.contactPerson;
         address = parkingLotBuilder.address;
@@ -53,11 +53,11 @@ public class ParkingLot {
     public String getName() {
         return name;
     }
-/*
+
     public Category getCategory() {
         return category;
     }
-*/
+
     public Integer getMaxCapacity() {
         return maxCapacity;
     }

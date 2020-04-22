@@ -21,10 +21,11 @@ public class ParkingLotDto {
 
     }
 
-    public ParkingLotDto(int id, String name, Integer maxCapacity) {
+    public ParkingLotDto(int id, String name, Integer maxCapacity, Category category) {
         this.id = id;
         this.name = name;
         this.maxCapacity=maxCapacity;
+        this.category=category;
     }
 
     public ParkingLotDto(String name, Category category, Integer maxCapacity, Person contactPerson, Address address, BigDecimal pricePerHour){

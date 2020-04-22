@@ -10,8 +10,8 @@ public class ParkingLotMapper {
 
         return new ParkingLotDto(parkingLot.getId(),
                         parkingLot.getName(),
-                       /* parkingLot.getCategory(),
-                        */parkingLot.getMaxCapacity()
+                        parkingLot.getMaxCapacity(),
+                        parkingLot.getCategory()
                        /* parkingLot.getContactPerson(),
                         parkingLot.getAddress(),
                         parkingLot.getPricePerHour()*/
