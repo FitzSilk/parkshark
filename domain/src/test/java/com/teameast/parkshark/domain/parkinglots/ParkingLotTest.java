@@ -30,7 +30,7 @@ class ParkingLotTest {
 
     }
 
-    @Test
+/*    @Test
     void whenNotInsertingName_ThrowsError() {
         Category category=new Category();
         Assertions.assertThatThrownBy(() -> parkingLotBuilder()
@@ -40,5 +40,5 @@ class ParkingLotTest {
                 .withContactPerson(new Person())
                 .withPricePerHour(new BigDecimal("5.5"))
                 .build()).isInstanceOf(IllegalArgumentException.class);
-    }
+    }*/
 }

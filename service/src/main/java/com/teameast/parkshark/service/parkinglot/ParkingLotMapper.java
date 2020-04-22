@@ -9,12 +9,12 @@ public class ParkingLotMapper {
     public ParkingLotDto parkingLotToDto(ParkingLot parkingLot) {
 
         return new ParkingLotDto(parkingLot.getId(),
-                        parkingLot.getName(),
-                        parkingLot.getCategory(),
+                        parkingLot.getName()
+                       /* parkingLot.getCategory(),
                         parkingLot.getMaxCapacity(),
                         parkingLot.getContactPerson(),
                         parkingLot.getAddress(),
-                        parkingLot.getPricePerHour()
+                        parkingLot.getPricePerHour()*/
                 );
     }
 

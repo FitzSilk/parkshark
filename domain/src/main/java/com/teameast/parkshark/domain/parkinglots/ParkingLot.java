@@ -1,9 +1,7 @@
 package com.teameast.parkshark.domain.parkinglots;
 
-import com.teameast.parkshark.domain.personalinformation.Person;
 import com.teameast.parkshark.domain.personalinformation.Address;
-import org.springframework.jca.cci.CannotGetCciConnectionException;
-import org.springframework.transaction.annotation.Transactional;
+import com.teameast.parkshark.domain.personalinformation.Person;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -13,11 +11,12 @@ import java.math.BigDecimal;
 public class ParkingLot {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int pl_id;
 
     @Column (name="pl_name")
     private String name;
-
+/*
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="category_id")
     private Category category;
@@ -35,28 +34,16 @@ public class ParkingLot {
 
     @Column (name="price_hour")
     private BigDecimal pricePerHour;
-
+*/
     public ParkingLot(){}
 
     public ParkingLot(ParkingLotBuilder parkingLotBuilder) {
         name = parkingLotBuilder.name;
-        category = parkingLotBuilder.category;
+/*        category = parkingLotBuilder.category;
         maxCapacity = parkingLotBuilder.maxCapacity;
         contactPerson = parkingLotBuilder.contactPerson;
         address = parkingLotBuilder.address;
-        pricePerHour = parkingLotBuilder.pricePerHour;
-    }
-
-    @Override
-    public String toString() {
-        return "ParkingLot{" +
-                "name='" + name + '\'' +
-                ", category='" + category + '\'' +
-                ", maxCapacity=" + maxCapacity +
-                ", contactPerson=" + contactPerson +
-                ", address=" + address +
-                ", pricePerHour=" + pricePerHour +
-                '}';
+        pricePerHour = parkingLotBuilder.pricePerHour;*/
     }
 
     public int getId() {
@@ -66,7 +53,7 @@ public class ParkingLot {
     public String getName() {
         return name;
     }
-
+/*
     public Category getCategory() {
         return category;
     }
@@ -86,7 +73,7 @@ public class ParkingLot {
     public BigDecimal getPricePerHour() {
         return pricePerHour;
     }
-
+*/
     public static class ParkingLotBuilder {
         private String name;
         private Category category;
