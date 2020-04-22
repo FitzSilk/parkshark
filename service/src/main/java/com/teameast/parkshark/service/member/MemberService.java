@@ -22,4 +22,8 @@ public class MemberService {
     public Collection<UserDto> getAllMembers() {
         return memberMapper.toDto(userRepository.findAll());
     }
+
+    public UserDto getMemberById(int id) {
+        return memberMapper.toDto(userRepository.findById(id).orElseThrow());
+    }
 }

@@ -1,6 +1,7 @@
 package com.teameast.parkshark.domain.member;
 
 import com.teameast.parkshark.domain.member.features.RoleType;
+import com.teameast.parkshark.domain.phone.PhoneNumber;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -33,9 +34,11 @@ public class User {
     @Column(name = "registration_date")
     private LocalDate registrationDate;
 
+    @OneToOne
     @JoinColumn(name = "phone_id")
-    private int phoneNumber;
+    private PhoneNumber phoneNumber;
 
+    @Transient
     private RoleType roleType;
 
     public User() {
@@ -83,7 +86,7 @@ public class User {
         return licencePlate;
     }
 
-    public int getPhoneNumber() {
+    public PhoneNumber getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -98,7 +101,7 @@ public class User {
         private String lastName;
         private int licencePlate;
         private String email;
-        private int phoneNumber;
+        private PhoneNumber phoneNumber;
         private LocalDate registrationDate;
         private int address;
 
@@ -144,7 +147,7 @@ public class User {
             return this;
         }
 
-        public UserBuilder withPhoneNumber(int phoneNumber) {
+        public UserBuilder withPhoneNumber(PhoneNumber phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }
@@ -174,7 +177,7 @@ public class User {
             return email;
         }
 
-        public int getPhoneNumber() {
+        public PhoneNumber getPhoneNumber() {
             return phoneNumber;
         }
 

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
@@ -27,6 +28,12 @@ public class MemberController {
     public Collection<UserDto> getAllMembers() {
         myLogger.info("someone visited this page");
         return memberService.getAllMembers();
+    }
+
+    @GetMapping(path = "/id", produces = "application/json")
+    public UserDto getMemberById(@RequestParam int id) {
+        myLogger.info("someone try to get informations on a user");
+        return memberService.getMemberById(id);
     }
 
 }
