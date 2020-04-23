@@ -5,6 +5,7 @@ import com.teameast.parkshark.domain.phone.PhoneNumber;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name="members")
@@ -12,7 +13,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int member_id;
+    private UUID member_id;
 
     @Column(name = "firstname")
     private String firstName;
@@ -33,9 +34,6 @@ public class User {
     @JoinColumn(name = "address_id")
     private MemberAddress address;
 
-    @Transient
-    private String password;
-
     @Column(name = "registration_date")
     private LocalDate registrationDate;
 
@@ -45,6 +43,8 @@ public class User {
 
     @Transient
     private RoleType roleType;
+
+    @Transient
     private String password="abc";
 
     public User() {
@@ -61,7 +61,7 @@ public class User {
         this.phoneNumber = userBuilder.getPhoneNumber();
     }
 
-    public int getId() {
+    public UUID getId() {
         return member_id;
     }
 
@@ -107,7 +107,7 @@ public class User {
 
     public static class UserBuilder {
 
-        private int id;
+        private UUID id;
         private String firstName;
         private String lastName;
         private int licencePlate;
@@ -129,7 +129,7 @@ public class User {
             return new User(this);
         }
 
-        public UserBuilder withId(int id) {
+        public UserBuilder withId(UUID id) {
             this.id = id;
             return this;
         }
@@ -174,7 +174,7 @@ public class User {
             return this;
         }
 
-        public int getId() {
+        public UUID getId() {
             return id;
         }
 

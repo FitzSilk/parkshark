@@ -5,10 +5,11 @@ import com.teameast.parkshark.domain.member.features.RoleType;
 import com.teameast.parkshark.domain.phone.PhoneNumber;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class UserDto {
 
-    private int member_id;
+    private UUID member_id;
     private String firstName;
     private String lastName;
     private int licencePlate;
@@ -31,7 +32,7 @@ public class UserDto {
         this.phoneNumber = userDtoBuilder.getPhoneNumber();
     }
 
-    public int getMember_id() {
+    public UUID getMember_id() {
         return member_id;
     }
 
@@ -79,7 +80,7 @@ public class UserDto {
 
     public static class UserDtoBuilder {
 
-        private int id;
+        private UUID id;
         private String firstName;
         private String lastName;
         private int licencePlate;
@@ -101,7 +102,7 @@ public class UserDto {
             return new UserDto(this);
         }
 
-        public UserDtoBuilder withId(int id) {
+        public UserDtoBuilder withId(UUID id) {
             this.id = id;
             return this;
         }
@@ -146,7 +147,7 @@ public class UserDto {
             return this;
         }
 
-        public int getId() {
+        public UUID getId() {
             return id;
         }
 

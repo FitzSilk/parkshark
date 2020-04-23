@@ -2,7 +2,6 @@ package com.teameast.parkshark.service.member;
 
 import com.teameast.parkshark.domain.member.MemberAddress;
 import com.teameast.parkshark.domain.member.User;
-import com.teameast.parkshark.domain.personalinformation.Address;
 import com.teameast.parkshark.domain.phone.PhoneNumber;
 import org.springframework.stereotype.Component;
 
