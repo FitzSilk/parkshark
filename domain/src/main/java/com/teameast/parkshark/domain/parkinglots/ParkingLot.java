@@ -17,7 +17,7 @@ public class ParkingLot {
     @Column (name="pl_name")
     private String name;
 
-    @ManyToOne(cascade=CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name="category_id")
     private Category category;
 

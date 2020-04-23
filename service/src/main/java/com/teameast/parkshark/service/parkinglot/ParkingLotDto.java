@@ -74,4 +74,8 @@ public class ParkingLotDto {
     public BigDecimal getPricePerHour() {
         return pricePerHour;
     }
+
+    public void setCategory(Category category) {
+        this.category=category;
+    }
 }
