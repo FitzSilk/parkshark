@@ -30,6 +30,7 @@ public class MemberMapper {
 
     public UserDto toDto(User user) {
         return new UserDto(userDtoBuilder()
+                .withId(user.getId())
                 .withFirstName(user.getFirstName())
                 .withLastName(user.getLastName())
                 .withEmail(user.getEmail())

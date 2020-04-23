@@ -4,12 +4,9 @@ import com.teameast.parkshark.domain.member.UserRepository;
 import com.teameast.parkshark.domain.phone.PhoneNumber;
 import com.teameast.parkshark.domain.phone.PhoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class MemberService {
@@ -35,15 +32,31 @@ public class MemberService {
     }
 
     public UserDto saveMember(String firstName, String lastName, int licencePlate, String licencePlateCountry, String email, int address, String phoneNumber) {
-        List<String> phoneBank = phoneRepository.findAll().stream().map(PhoneNumber::getPhoneNumber).collect(Collectors.toList());
-        PhoneNumber phoneNumber1 = new PhoneNumber(phoneNumber);
-        PhoneNumber savedPhone = phoneRepository.save(phoneNumber1);
-        /*if (phoneBank.contains(phoneNumber)) {
-            phoneNumber1 = phoneRepository.findById(phoneRepository.findByValue(phoneNumber)).orElseThrow();
-        } else {
-            PhoneNumber tempPhoneNumber = new PhoneNumber(phoneNumber);
-            phoneNumber1 = phoneRepository.save(tempPhoneNumber);
-        }*/
-        return memberMapper.toDto(userRepository.save(memberMapper.toUser(firstName, lastName, licencePlate, licencePlateCountry, email, address, savedPhone)));
+        PhoneNumber savedNumber = createOrUpdatePhoneNumber(phoneNumber);
+        return memberMapper.toDto(userRepository.save(memberMapper.toUser(firstName, lastName, licencePlate, licencePlateCountry, email, address, savedNumber)));
+    }
+
+    private PhoneNumber createOrUpdatePhoneNumber(String phoneNumber) {
+        PhoneNumber tempNumber, savedNumber;
+        tempNumber = checkIfAlreadyExists(phoneNumber);
+        savedNumber = createPhoneNumberIfNew(phoneNumber, tempNumber);
+        return savedNumber;
+    }
+
+    private PhoneNumber createPhoneNumberIfNew(String phoneNumber, PhoneNumber tempNumber) {
+        PhoneNumber savedNumber;
+        if(tempNumber == null || tempNumber.getPhoneNumber() == null ) {
+            tempNumber = new PhoneNumber(phoneNumber);
+            savedNumber = phoneRepository.save(tempNumber);
+        } else savedNumber = tempNumber;
+        return savedNumber;
+    }
+
+    private PhoneNumber checkIfAlreadyExists(String phoneNumber) {
+        PhoneNumber tempNumber = null;
+        for (PhoneNumber number : phoneRepository.findAll()) {
+            if(phoneNumber.equals(number.getPhoneNumber())) tempNumber = number;
+        }
+        return tempNumber;
     }
 }

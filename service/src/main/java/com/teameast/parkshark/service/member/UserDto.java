@@ -13,15 +13,14 @@ public class UserDto {
     private int licencePlate;
     private String email;
     private int address;
-    private String password;
     private LocalDate registrationDate;
     private PhoneNumber phoneNumber;
-    private RoleType roleType;
 
     public UserDto() {
     }
 
     public UserDto(UserDtoBuilder userDtoBuilder) {
+        this.member_id = userDtoBuilder.getId();
         this.firstName = userDtoBuilder.getFirstName();
         this.lastName = userDtoBuilder.getLastName();
         this.licencePlate = userDtoBuilder.getLicencePlate();
@@ -55,24 +54,26 @@ public class UserDto {
         return phoneNumber;
     }
 
-    public RoleType getRoleType() {
-        return roleType;
-    }
-
     public String getFirstName() {
         return firstName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public Object getRole() {
-        return roleType;
-    }
-
     public String getEmail() {
         return email;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "member_id=" + member_id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", licencePlate=" + licencePlate +
+                ", email='" + email + '\'' +
+                ", address=" + address +
+                ", registrationDate=" + registrationDate +
+                ", phoneNumber=" + phoneNumber +
+                '}';
     }
 
     public static class UserDtoBuilder {
