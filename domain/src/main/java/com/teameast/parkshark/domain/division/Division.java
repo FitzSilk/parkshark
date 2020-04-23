@@ -1,32 +1,36 @@
 package com.teameast.parkshark.domain.division;
 
-import com.teameast.parkshark.domain.personalinformation.Person;
+import javax.persistence.*;
 
+@Table
+@Entity
 public class Division {
 
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer division_id;
+
+    @Column(name = "division_name")
     private String name;
+
+    @Column(name = "original_name")
     private String originalName;
-    private Person director;
-    private double monthlyCost;
-    private double reductionRate;
+
+    @Column(name = "director_name")
+    private String director;
 
     public Division() {
     }
 
     public Division(DivisionBuilder divisionBuilder) {
-        id = divisionBuilder.getId();
+        division_id = divisionBuilder.getId();
         name = divisionBuilder.getName();
         originalName = divisionBuilder.getOriginalName();
         director = divisionBuilder.getDirector();
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Integer getId() {
-        return id;
+        return division_id;
     }
 
     public String getName() {
@@ -37,7 +41,7 @@ public class Division {
         return originalName;
     }
 
-    public Person getDirector() {
+    public String getDirector() {
         return director;
     }
 
@@ -45,9 +49,7 @@ public class Division {
         private Integer id;
         private String name;
         private String originalName;
-        private Person director;
-        private double monthlyCost;
-        private double reductionRate;
+        private String director;
 
         protected DivisionBuilder() {
         }
@@ -75,7 +77,7 @@ public class Division {
             return this;
         }
 
-        public DivisionBuilder withDirector(Person director) {
+        public DivisionBuilder withDirector(String director) {
             this.director = director;
             return this;
         }
@@ -92,7 +94,7 @@ public class Division {
             return originalName;
         }
 
-        public Person getDirector() {
+        public String getDirector() {
             return director;
         }
     }

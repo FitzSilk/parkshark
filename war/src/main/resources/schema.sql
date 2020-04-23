@@ -8,7 +8,7 @@ begin;
 
 set schema 'parkshark';
 drop table if exists zip, person_address, person, allocations,
-     division, parking_lot, category, parking_address, phone, members, membership_level cascade;
+    division, parking_lot, category, parking_address, phone, members, membership_level cascade;
 
 drop schema parkshark;
 -- -- END UNCOMMENT
@@ -60,9 +60,9 @@ set schema 'parkshark';
 -- );
 
 create table if not exists category(
-                                        category_id serial not null primary key,
-	                                    category varchar(50)
- );
+                                       category_id serial not null primary key,
+                                       category varchar(50)
+);
 
 -- create table if not exists parking_address(
 --                                               parking_address_id serial not null primary key,
@@ -73,16 +73,16 @@ create table if not exists category(
 -- );
 
 create table if not exists parking_lot(
-                                           pl_id serial not null primary key,
-                                           pl_name varchar(100),
-                                           category_id int,
-                                           division_id int,
-                                           max_capacity int,
+                                          pl_id serial not null primary key,
+                                          pl_name varchar(100),
+                                          category_id int,
+                                          division_id int,
+                                          max_capacity int,
 --                                               check (max_capacity > 0), -- must be positive value
-                                           contact_person_id varchar,  -- UUID of a person
-                                           address_id int,
-                                           price_hour numeric(5,2),
-                                           foreign key (category_id) references category(category_id)
+                                          contact_person_id varchar,  -- UUID of a person
+                                          address_id int,
+                                          price_hour numeric(5,2),
+                                          foreign key (category_id) references category(category_id)
 --                                           foreign key (division_id) references division(division_id),
 --                                           foreign key (contact_person_id) references person(person_id),
 --                                           foreign key (address_id) references parking_address(parking_address_id)
@@ -130,7 +130,6 @@ create table if not exists parking_lot(
 -- rollback;
 
 commit;
-
 
 
 

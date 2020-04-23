@@ -1,6 +1,5 @@
 package com.teameast.parkshark.api;
 
-import com.teameast.parkshark.domain.personalinformation.Person;
 import com.teameast.parkshark.service.division.DivisionDto;
 import com.teameast.parkshark.service.division.DivisionService;
 import org.slf4j.Logger;
@@ -30,15 +29,18 @@ public class DivisionController {
         return divisionService.getAllDivisions();
     }
 
+    @GetMapping(path = "/id", produces = "application/json")
+    public DivisionDto getDivisionById(@RequestParam int id) {
+        myLogger.info("someone try to get informations on one division, here.");
+        return divisionService.getDivisionById(id);
+    }
+
     @PostMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public DivisionDto createDivision(@RequestParam String name,
                                       @RequestParam(name = "original_name") String originalName,
                                       @RequestParam(name = "director_name") String directorName) {
         myLogger.info("someone created a division here");
-        Person director = new Person();
-        director.setName(directorName);
-        DivisionDto divisionDto = new DivisionDto(1, name, originalName, director);
-        return divisionService.create(divisionDto);
+        return divisionService.create(name, originalName, directorName);
     }
 }
