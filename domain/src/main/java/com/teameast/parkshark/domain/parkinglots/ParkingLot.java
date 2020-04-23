@@ -31,10 +31,10 @@ public class ParkingLot {
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="address_id")
     private Address address;
-
+*/
     @Column (name="price_hour")
     private BigDecimal pricePerHour;
-*/
+
     public ParkingLot(){}
 
     public ParkingLot(ParkingLotBuilder parkingLotBuilder) {
@@ -42,8 +42,8 @@ public class ParkingLot {
         category = parkingLotBuilder.category;
         maxCapacity = parkingLotBuilder.maxCapacity;
         /*contactPerson = parkingLotBuilder.contactPerson;
-        address = parkingLotBuilder.address;
-        pricePerHour = parkingLotBuilder.pricePerHour;*/
+        address = parkingLotBuilder.address;*/
+        pricePerHour = parkingLotBuilder.pricePerHour;
     }
 
     public int getId() {
@@ -69,11 +69,11 @@ public class ParkingLot {
     public Address getAddress() {
         return address;
     }
-
+*/
     public BigDecimal getPricePerHour() {
         return pricePerHour;
     }
-*/
+
     public static class ParkingLotBuilder {
         private String name;
         private Category category;
