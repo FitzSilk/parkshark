@@ -2,14 +2,20 @@ package com.teameast.parkshark.service.division;
 
 public class DivisionDto {
 
+    private final Integer id;
     private final String name;
     private final String originalName;
     private final String director;
 
     public DivisionDto(DivisionDtoBuilder divisionDtoBuilder) {
+        this.id = divisionDtoBuilder.getId();
         this.name = divisionDtoBuilder.getName();
         this.originalName = divisionDtoBuilder.getOriginalName();
         this.director = divisionDtoBuilder.getDirector();
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {

@@ -15,6 +15,7 @@ public class DivisionMapper {
 
     public DivisionDto toDto(Division division) {
         return new DivisionDto(divisionDtoBuilder()
+                .withId(division.getId())
                 .withName(division.getName())
                 .withOriginalName(division.getOriginalName())
                 .withDirector(division.getDirector())
