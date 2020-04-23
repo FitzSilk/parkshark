@@ -5,26 +5,26 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ParkingLotMapper {
-    private final CategoryMapper categoryMapper;
 
-    public ParkingLotMapper(CategoryMapper categoryMapper) {
-        this.categoryMapper = categoryMapper;
+
+    public ParkingLotMapper() {
+
     }
 
     public ParkingLotDto parkingLotToDto(ParkingLot parkingLot) {
 
         return new ParkingLotDto(parkingLot.getId(),
-                        parkingLot.getName(),
-                        parkingLot.getMaxCapacity(),
-                        parkingLot.getCategory(),
-                       /* parkingLot.getContactPerson(),
-                        parkingLot.getAddress(),*/
-                        parkingLot.getPricePerHour()
-                );
+                parkingLot.getName(),
+                parkingLot.getCategory(),
+                parkingLot.getMaxCapacity(),
+                parkingLot.getContactPerson(),
+                parkingLot.getAddress(),
+                parkingLot.getPricePerHour()
+        );
     }
 
 
-    public ParkingLot parkingLotDtoToParkingLot(ParkingLotDto parkingLotDto){
+    public ParkingLot parkingLotDtoToParkingLot(ParkingLotDto parkingLotDto) {
         return ParkingLot
                 .ParkingLotBuilder
                 .parkingLotBuilder()

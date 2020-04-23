@@ -23,15 +23,16 @@ public class ParkingLot {
 
     @Column (name="max_capacity")
     private Integer maxCapacity;
-/*
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="contact_person_id")
+
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="contact_person_id",referencedColumnName = "person_id")
     private Person contactPerson;
 
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="address_id")
+    /*@ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="address_id")*/
+    @Transient
     private Address address;
-*/
+
     @Column (name="price_hour")
     private BigDecimal pricePerHour;
 
@@ -41,8 +42,8 @@ public class ParkingLot {
         name = parkingLotBuilder.name;
         category = parkingLotBuilder.category;
         maxCapacity = parkingLotBuilder.maxCapacity;
-        /*contactPerson = parkingLotBuilder.contactPerson;
-        address = parkingLotBuilder.address;*/
+        contactPerson = parkingLotBuilder.contactPerson;
+        /*address = parkingLotBuilder.address;*/
         pricePerHour = parkingLotBuilder.pricePerHour;
     }
 
@@ -61,7 +62,7 @@ public class ParkingLot {
     public Integer getMaxCapacity() {
         return maxCapacity;
     }
-/*
+
     public Person getContactPerson() {
         return contactPerson;
     }
@@ -69,7 +70,7 @@ public class ParkingLot {
     public Address getAddress() {
         return address;
     }
-*/
+
     public BigDecimal getPricePerHour() {
         return pricePerHour;
     }

@@ -5,6 +5,7 @@ import com.teameast.parkshark.domain.member.features.RoleType;
 
 public class User extends Person {
     private RoleType roleType;
+    private String password="abc";
 
     public User() {
     }
@@ -18,7 +19,7 @@ public class User extends Person {
     }
 
     public String getPassword() {
-        return super.getPassword();
+        return password;
     }
 
     public Object getRole() {

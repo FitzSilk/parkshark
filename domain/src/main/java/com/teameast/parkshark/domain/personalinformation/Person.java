@@ -3,11 +3,13 @@ package com.teameast.parkshark.domain.personalinformation;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.UUID;
 @Entity
 @Table(name="PERSON")
 public class Person {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private UUID person_id;
 
     @Column(name="firstname")
@@ -16,22 +18,23 @@ public class Person {
     @Column (name="lastname")
     private String lastName;
 
-    @Transient
-    private String password;
 
     @Column (name="email")
     private String email;
 
-    @ManyToOne
-    @JoinColumn (name="address_id")
+   /* @ManyToOne
+    @JoinColumn (name="address_id")*/
+   @Transient
     private Address address;
 
-    @JoinColumn(name ="phone_id")
-    @Nullable
+    /*@JoinColumn(name ="phone_id")
+    @Nullable*/
+    @Transient
     private Integer fixPhoneNumber;
 
-    @JoinColumn(name = "phone_id")
-    @Nullable
+    /*@JoinColumn(name = "phone_id")
+    @Nullable*/
+    @Transient
     private Integer mobilePhoneNumber;
 
     public Person(){}
@@ -45,9 +48,6 @@ public class Person {
         return firstName;
     }
 
-    protected String getPassword() {
-        return password;
-    }
 
     protected String getEmail() {
         return email;
@@ -59,5 +59,18 @@ public class Person {
 
     public void setName(String firstName) {
         this.firstName = firstName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(person_id, person.person_id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(person_id);
     }
 }
