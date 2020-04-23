@@ -29,8 +29,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "address_id")
-    private int address;
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private MemberAddress address;
 
     @Transient
     private String password;
@@ -83,7 +84,7 @@ public class User {
         return lastName;
     }
 
-    public int getAddress() {
+    public MemberAddress getAddress() {
         return address;
     }
 
@@ -112,7 +113,7 @@ public class User {
         private String email;
         private PhoneNumber phoneNumber;
         private LocalDate registrationDate;
-        private int address;
+        private MemberAddress address;
         private String licencePlateCountry;
 
         protected UserBuilder() {
@@ -152,8 +153,8 @@ public class User {
             return this;
         }
 
-        public UserBuilder withAddress(int id) {
-            this.address = id;
+        public UserBuilder withAddress(MemberAddress memberAddress) {
+            this.address = memberAddress;
             return this;
         }
 
@@ -200,7 +201,7 @@ public class User {
             return registrationDate;
         }
 
-        public int getAddress() {
+        public MemberAddress getAddress() {
             return address;
         }
 

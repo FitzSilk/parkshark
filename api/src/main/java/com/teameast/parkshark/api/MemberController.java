@@ -41,10 +41,12 @@ public class MemberController {
                               @RequestParam int licencePlate,
                               @RequestParam String licencePlateCountry,
                               @RequestParam String email,
-                              @RequestParam int address,
+                              @RequestParam String streetName,
+                              @RequestParam String streetNumber,
+                              @RequestParam String zipCode,
                               @RequestParam String phoneNumber) {
         myLogger.info("someone is trying to register here!");
-        return memberService.saveMember(firstName, lastName, licencePlate, licencePlateCountry, email, address, phoneNumber);
+        return memberService.saveMember(firstName, lastName, licencePlate, licencePlateCountry, email, streetName, streetNumber, zipCode, phoneNumber);
     }
 
 }

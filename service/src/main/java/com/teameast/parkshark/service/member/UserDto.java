@@ -1,5 +1,6 @@
 package com.teameast.parkshark.service.member;
 
+import com.teameast.parkshark.domain.member.MemberAddress;
 import com.teameast.parkshark.domain.member.features.RoleType;
 import com.teameast.parkshark.domain.phone.PhoneNumber;
 
@@ -12,7 +13,7 @@ public class UserDto {
     private String lastName;
     private int licencePlate;
     private String email;
-    private int address;
+    private MemberAddress address;
     private LocalDate registrationDate;
     private PhoneNumber phoneNumber;
 
@@ -42,7 +43,7 @@ public class UserDto {
         return licencePlate;
     }
 
-    public int getAddress() {
+    public MemberAddress getAddress() {
         return address;
     }
 
@@ -86,7 +87,7 @@ public class UserDto {
         private String email;
         private PhoneNumber phoneNumber;
         private LocalDate registrationDate;
-        private int address;
+        private MemberAddress address;
 
         protected UserDtoBuilder() {
 
@@ -130,8 +131,8 @@ public class UserDto {
             return this;
         }
 
-        public UserDtoBuilder withAddress(int id) {
-            this.address = id;
+        public UserDtoBuilder withAddress(MemberAddress memberAddress) {
+            this.address = memberAddress;
             return this;
         }
 
@@ -173,7 +174,7 @@ public class UserDto {
             return registrationDate;
         }
 
-        public int getAddress() {
+        public MemberAddress getAddress() {
             return address;
         }
 

@@ -24,6 +24,12 @@ public class MemberAddress {
     public MemberAddress() {
     }
 
+    public MemberAddress(String streetName, String streetNumber, String postalCode) {
+        this.streetName = streetName;
+        this.streetNumber = streetNumber;
+        this.postalCode = postalCode;
+    }
+
     public int getPerson_address_id() {
         return person_address_id;
     }

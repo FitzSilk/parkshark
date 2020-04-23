@@ -1,6 +1,8 @@
 package com.teameast.parkshark.service.member;
 
+import com.teameast.parkshark.domain.member.MemberAddress;
 import com.teameast.parkshark.domain.member.User;
+import com.teameast.parkshark.domain.personalinformation.Address;
 import com.teameast.parkshark.domain.phone.PhoneNumber;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +17,7 @@ import static com.teameast.parkshark.service.member.UserDto.UserDtoBuilder.userD
 @Component
 public class MemberMapper {
 
-    public User toUser(String firstName, String lastName, int licencePlate, String licencePlateCountry, String email, int address, PhoneNumber phoneNumber) {
+    public User toUser(String firstName, String lastName, int licencePlate, String licencePlateCountry, String email, MemberAddress address, PhoneNumber phoneNumber) {
         return new User(userBuilder()
                 .withFirstName(firstName)
                 .withLastName(lastName)
