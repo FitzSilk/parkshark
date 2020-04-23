@@ -1,5 +1,6 @@
 package com.teameast.parkshark.service.member;
 
+import com.sun.xml.bind.v2.model.core.ID;
 import com.teameast.parkshark.domain.member.MemberAddress;
 import com.teameast.parkshark.domain.member.MemberAddressRepository;
 import com.teameast.parkshark.domain.member.UserRepository;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.UUID;
 
 @Service
 public class MemberService {
@@ -31,7 +33,7 @@ public class MemberService {
         return memberMapper.toDto(userRepository.findAll());
     }
 
-    public UserDto getMemberById(int id) {
+    public UserDto getMemberById(UUID id) {
         return memberMapper.toDto(userRepository.findById(id).orElseThrow());
     }
 

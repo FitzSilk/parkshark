@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = MemberController.MEMBER_RESOURCE_PATH)
@@ -29,7 +30,7 @@ public class MemberController {
     }
 
     @GetMapping(path = "/id", produces = "application/json")
-    public UserDto getMemberById(@RequestParam int id) {
+    public UserDto getMemberById(@RequestParam UUID id) {
         myLogger.info("someone try to get informations on a user");
         return memberService.getMemberById(id);
     }
