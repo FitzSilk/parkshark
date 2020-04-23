@@ -1,7 +1,6 @@
 package com.teameast.parkshark.service.member;
 
 import com.teameast.parkshark.domain.member.MemberAddress;
-import com.teameast.parkshark.domain.member.features.RoleType;
 import com.teameast.parkshark.domain.phone.PhoneNumber;
 
 import java.time.LocalDate;
@@ -12,7 +11,8 @@ public class UserDto {
     private UUID member_id;
     private String firstName;
     private String lastName;
-    private int licencePlate;
+    private String licencePlate;
+    private String licencePlateCountry;
     private String email;
     private MemberAddress address;
     private LocalDate registrationDate;
@@ -26,6 +26,7 @@ public class UserDto {
         this.firstName = userDtoBuilder.getFirstName();
         this.lastName = userDtoBuilder.getLastName();
         this.licencePlate = userDtoBuilder.getLicencePlate();
+        this.licencePlateCountry = userDtoBuilder.getLicencePlateCountry();
         this.email = userDtoBuilder.getEmail();
         this.address = userDtoBuilder.getAddress();
         this.registrationDate = userDtoBuilder.getRegistrationDate();
@@ -40,8 +41,12 @@ public class UserDto {
         return lastName;
     }
 
-    public int getLicencePlate() {
+    public String getLicencePlate() {
         return licencePlate;
+    }
+
+    public String getLicencePlateCountry() {
+        return licencePlateCountry;
     }
 
     public MemberAddress getAddress() {
@@ -83,7 +88,7 @@ public class UserDto {
         private UUID id;
         private String firstName;
         private String lastName;
-        private int licencePlate;
+        private String licencePlate;
         private String licencePlateCountry;
         private String email;
         private PhoneNumber phoneNumber;
@@ -122,7 +127,7 @@ public class UserDto {
             return this;
         }
 
-        public UserDtoBuilder withLicencePlate(int licencePlate) {
+        public UserDtoBuilder withLicencePlate(String licencePlate) {
             this.licencePlate = licencePlate;
             return this;
         }
@@ -159,7 +164,7 @@ public class UserDto {
             return lastName;
         }
 
-        public int getLicencePlate() {
+        public String getLicencePlate() {
             return licencePlate;
         }
 

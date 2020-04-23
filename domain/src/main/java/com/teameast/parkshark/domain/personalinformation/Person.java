@@ -1,30 +1,29 @@
 package com.teameast.parkshark.domain.personalinformation;
 
-import org.springframework.lang.Nullable;
-
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
+
 @Entity
-@Table(name="PERSON")
+@Table(name = "PERSON")
 public class Person {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID person_id;
 
-    @Column(name="firstname")
+    @Column(name = "firstname")
     private String firstName;
 
-    @Column (name="lastname")
+    @Column(name = "lastname")
     private String lastName;
 
 
-    @Column (name="email")
+    @Column(name = "email")
     private String email;
 
-   /* @ManyToOne
-    @JoinColumn (name="address_id")*/
-   @Transient
+    /* @ManyToOne
+     @JoinColumn (name="address_id")*/
+    @Transient
     private Address address;
 
     /*@JoinColumn(name ="phone_id")
@@ -37,10 +36,11 @@ public class Person {
     @Transient
     private Integer mobilePhoneNumber;
 
-    public Person(){}
+    public Person() {
+    }
 
-    public Person(String firstName){
-        this.firstName=firstName;
+    public Person(String firstName) {
+        this.firstName = firstName;
     }
 
 

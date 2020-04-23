@@ -40,7 +40,7 @@ public class DivisionController {
     public DivisionDto createDivision(@RequestParam String name,
                                       @RequestParam(name = "original_name") String originalName,
                                       @RequestParam(name = "director_name") String directorName) {
-        myLogger.info("someone created a division here");
+        myLogger.info("someone try to create a division here!");
         return divisionService.create(name, originalName, directorName);
     }
 }

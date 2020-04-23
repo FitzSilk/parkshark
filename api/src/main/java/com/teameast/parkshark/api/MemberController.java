@@ -25,7 +25,7 @@ public class MemberController {
 
     @GetMapping(produces = "application/json")
     public Collection<UserDto> getAllMembers() {
-        myLogger.info("someone visited this page");
+        myLogger.info("someone is trying to get all members");
         return memberService.getAllMembers();
     }
 
@@ -39,7 +39,7 @@ public class MemberController {
     @ResponseStatus(value = HttpStatus.CREATED)
     public UserDto saveMember(@RequestParam String firstName,
                               @RequestParam String lastName,
-                              @RequestParam int licencePlate,
+                              @RequestParam String licencePlate,
                               @RequestParam String licencePlateCountry,
                               @RequestParam String email,
                               @RequestParam String streetName,

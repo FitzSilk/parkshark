@@ -8,6 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface PersonRepository extends CrudRepository<Person, UUID> {
-
     List<Person> findAll();
 }

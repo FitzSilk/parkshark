@@ -1,13 +1,6 @@
 package com.teameast.parkshark.api;
 
-import com.teameast.parkshark.domain.parkinglots.Category;
-import com.teameast.parkshark.domain.parkinglots.ParkingLot;
-import com.teameast.parkshark.domain.personalinformation.Address;
-import com.teameast.parkshark.domain.personalinformation.Person;
-import com.teameast.parkshark.domain.personalinformation.PostCode;
-import com.teameast.parkshark.service.parkinglot.CategoryMapper;
 import com.teameast.parkshark.service.parkinglot.ParkingLotDto;
-import com.teameast.parkshark.service.parkinglot.ParkingLotMapper;
 import com.teameast.parkshark.service.parkinglot.ParkingLotService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +13,9 @@ import java.util.List;
 @RequestMapping(path = ParkingLotController.PARKINGLOT_RESOURCE_PATH)
 
 public class ParkingLotController {
-    public static final String PARKINGLOT_RESOURCE_PATH="/parkinglots";
+    public static final String PARKINGLOT_RESOURCE_PATH = "/parkinglots";
     private final Logger myLogger = LoggerFactory.getLogger(ParkingLotController.class);
-    private ParkingLotService parkingLotService;
+    private final ParkingLotService parkingLotService;
 
     public ParkingLotController(ParkingLotService parkingLotService) {
         this.parkingLotService = parkingLotService;
@@ -36,12 +29,12 @@ public class ParkingLotController {
 
     }
 
-    @PostMapping(produces ="application/json", consumes="application/json")
+    @PostMapping(produces = "application/json", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public ParkingLotDto createParkingLot(@RequestBody ParkingLotDto parkingLotDto){
+    public ParkingLotDto createParkingLot(@RequestBody ParkingLotDto parkingLotDto) {
         myLogger.info("someone added a parking lot");
 
-       return parkingLotService.create(parkingLotDto);
+        return parkingLotService.create(parkingLotDto);
     }
 
 

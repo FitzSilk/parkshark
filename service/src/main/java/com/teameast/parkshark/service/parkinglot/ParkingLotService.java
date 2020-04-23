@@ -12,24 +12,23 @@ import java.util.stream.Collectors;
 @Transactional
 @Service
 public class ParkingLotService {
-    private ParkingLotRepository parkingLotRepository;
-    private ParkingLotMapper parkingLotMapper;
-    private CategoryRepository categoryRepository;
+    private final ParkingLotRepository parkingLotRepository;
+    private final ParkingLotMapper parkingLotMapper;
+    private final CategoryRepository categoryRepository;
 
 
-
-    public ParkingLotService(ParkingLotRepository parkingLotRepository, ParkingLotMapper parkingLotMapper, CategoryRepository categoryRepository, CategoryMapper categoryMapper) {
+    public ParkingLotService(ParkingLotRepository parkingLotRepository, ParkingLotMapper parkingLotMapper, CategoryRepository categoryRepository) {
         this.parkingLotRepository = parkingLotRepository;
         this.parkingLotMapper = parkingLotMapper;
-        this.categoryRepository=categoryRepository;
+        this.categoryRepository = categoryRepository;
 
     }
 
-    public ParkingLotDto create (ParkingLotDto parkingLotDto){
+    public ParkingLotDto create(ParkingLotDto parkingLotDto) {
 
-        Category category=categoryRepository.findByNameOfCategory(parkingLotDto.getCategory().getCategory());
+        Category category = categoryRepository.findByNameOfCategory(parkingLotDto.getCategory().getCategory());
 
-        if(category== null){
+        if (category == null) {
             throw new IllegalArgumentException("Put something right, you moron !");
         }
 
@@ -37,10 +36,10 @@ public class ParkingLotService {
         return parkingLotMapper.parkingLotToDto(parkingLotRepository.save(parkingLotMapper.parkingLotDtoToParkingLot(parkingLotDto)));
     }
 
-    public List<ParkingLotDto> getAllParkingLot(){
+    public List<ParkingLotDto> getAllParkingLot() {
         return parkingLotRepository.findAll()
                 .stream()
-                .map(p->parkingLotMapper.parkingLotToDto(p))
+                .map(p -> parkingLotMapper.parkingLotToDto(p))
                 .collect(Collectors.toList());
     }
 

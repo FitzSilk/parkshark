@@ -7,7 +7,5 @@ import java.util.List;
 
 @Repository
 public interface ParkingLotRepository extends CrudRepository<ParkingLot, Integer> {
-
-
     List<ParkingLot> findAll();
 }

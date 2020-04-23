@@ -17,11 +17,11 @@ public class ParkingLotDto {
     private Address address;
     private BigDecimal pricePerHour;
 
-    public ParkingLotDto(){
+    public ParkingLotDto() {
 
     }
 
-    public ParkingLotDto(String name, Category category, Integer maxCapacity, Person contactPerson, Address address, BigDecimal pricePerHour){
+    public ParkingLotDto(String name, Category category, Integer maxCapacity, Person contactPerson, Address address, BigDecimal pricePerHour) {
         this.name = name;
         this.category = category;
         this.maxCapacity = maxCapacity;
@@ -69,6 +69,6 @@ public class ParkingLotDto {
     }
 
     public void setCategory(Category category) {
-        this.category=category;
+        this.category = category;
     }
 }

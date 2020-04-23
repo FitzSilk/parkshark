@@ -1,15 +1,13 @@
 package com.teameast.parkshark.domain.member;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "person_address")
 public class MemberAddress {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int person_address_id;
 
     @Column(name = "person_street")

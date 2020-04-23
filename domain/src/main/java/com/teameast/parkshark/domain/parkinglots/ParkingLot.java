@@ -7,25 +7,25 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="parking_lot")
+@Table(name = "parking_lot")
 public class ParkingLot {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pl_id;
 
-    @Column (name="pl_name")
+    @Column(name = "pl_name")
     private String name;
 
     @ManyToOne
-    @JoinColumn(name="category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
-    @Column (name="max_capacity")
+    @Column(name = "max_capacity")
     private Integer maxCapacity;
 
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="contact_person_id",referencedColumnName = "person_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_person_id", referencedColumnName = "person_id")
     private Person contactPerson;
 
     /*@ManyToOne(cascade=CascadeType.ALL)
@@ -33,10 +33,11 @@ public class ParkingLot {
     @Transient
     private Address address;
 
-    @Column (name="price_hour")
+    @Column(name = "price_hour")
     private BigDecimal pricePerHour;
 
-    public ParkingLot(){}
+    public ParkingLot() {
+    }
 
     public ParkingLot(ParkingLotBuilder parkingLotBuilder) {
         name = parkingLotBuilder.name;
@@ -91,13 +92,13 @@ public class ParkingLot {
         }
 
         private void checkForNulls(ParkingLotBuilder parkingLotBuilder) {
-            if(parkingLotBuilder.name==null || parkingLotBuilder.category==null || parkingLotBuilder.maxCapacity==0|| parkingLotBuilder.contactPerson==null ||parkingLotBuilder.address==null || parkingLotBuilder.pricePerHour==null){
+            if (parkingLotBuilder.name == null || parkingLotBuilder.category == null || parkingLotBuilder.maxCapacity == 0 || parkingLotBuilder.contactPerson == null || parkingLotBuilder.pricePerHour == null) {
                 throw new IllegalArgumentException("Put in something you moron!!!");
             }
         }
 
-        public ParkingLot build(){
-            //checkForNulls(this);
+        public ParkingLot build() {
+            checkForNulls(this);
             return new ParkingLot(this);
         }
 
@@ -111,20 +112,23 @@ public class ParkingLot {
             return this;
         }
 
-        public ParkingLotBuilder withMaxCapacity(Integer maxCapacity){
-            this.maxCapacity=maxCapacity;
+        public ParkingLotBuilder withMaxCapacity(Integer maxCapacity) {
+            this.maxCapacity = maxCapacity;
             return this;
         }
-        public ParkingLotBuilder withContactPerson (Person contactPerson){
-            this.contactPerson=contactPerson;
+
+        public ParkingLotBuilder withContactPerson(Person contactPerson) {
+            this.contactPerson = contactPerson;
             return this;
         }
-        public ParkingLotBuilder withAddress (Address address){
-            this.address=address;
+
+        public ParkingLotBuilder withAddress(Address address) {
+            this.address = address;
             return this;
         }
-        public ParkingLotBuilder withPricePerHour(BigDecimal pricePerHour){
-            this.pricePerHour=pricePerHour;
+
+        public ParkingLotBuilder withPricePerHour(BigDecimal pricePerHour) {
+            this.pricePerHour = pricePerHour;
             return this;
         }
 

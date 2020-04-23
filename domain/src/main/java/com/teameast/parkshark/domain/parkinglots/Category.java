@@ -4,20 +4,21 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table (name="category")
+@Table(name = "category")
 public class Category {
     @Id
-    @Column (name="category_id")
+    @Column(name = "category_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name="category")
+    @Column(name = "category")
     private String category;
 
-    public Category(){}
+    public Category() {
+    }
 
     public Category(String category) {
-        this.category=category;
+        this.category = category;
     }
 
     @Override

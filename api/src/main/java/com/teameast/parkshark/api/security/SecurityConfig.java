@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers(MemberController.MEMBER_RESOURCE_PATH + "/**").permitAll()
                 .antMatchers(DivisionController.DIVISION_RESOURCE_PATH + "/**").permitAll()
-                .antMatchers(ParkingLotController.PARKINGLOT_RESOURCE_PATH+"/**").permitAll()
+                .antMatchers(ParkingLotController.PARKINGLOT_RESOURCE_PATH + "/**").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic()
                 .authenticationEntryPoint(authEntryPoint)

@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name="members")
+@Table(name = "members")
 public class User {
 
     @Id
@@ -22,7 +22,7 @@ public class User {
     private String lastName;
 
     @Column(name = "licence_plate")
-    private int licencePlate;
+    private String licencePlate;
 
     @Column(name = "licence_plate_country")
     private String licencePlateCountry;
@@ -45,7 +45,7 @@ public class User {
     private RoleType roleType;
 
     @Transient
-    private String password="abc";
+    private String password = "abc";
 
     public User() {
     }
@@ -89,7 +89,7 @@ public class User {
         return address;
     }
 
-    public int getLicencePlate() {
+    public String getLicencePlate() {
         return licencePlate;
     }
 
@@ -110,7 +110,7 @@ public class User {
         private UUID id;
         private String firstName;
         private String lastName;
-        private int licencePlate;
+        private String licencePlate;
         private String email;
         private PhoneNumber phoneNumber;
         private LocalDate registrationDate;
@@ -149,7 +149,7 @@ public class User {
             return this;
         }
 
-        public UserBuilder withLicencePlate(int licencePlate) {
+        public UserBuilder withLicencePlate(String licencePlate) {
             this.licencePlate = licencePlate;
             return this;
         }
@@ -186,7 +186,7 @@ public class User {
             return lastName;
         }
 
-        public int getLicencePlate() {
+        public String getLicencePlate() {
             return licencePlate;
         }
 

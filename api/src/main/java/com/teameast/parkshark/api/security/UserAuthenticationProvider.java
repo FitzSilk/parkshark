@@ -1,8 +1,8 @@
 package com.teameast.parkshark.api.security;
 
 import com.teameast.parkshark.api.security.authentication.AuthenticationService;
-import com.teameast.parkshark.domain.member.features.Feature;
 import com.teameast.parkshark.domain.member.User;
+import com.teameast.parkshark.domain.member.features.Feature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -33,7 +33,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         User user = authenticationService.getUser(authentication.getPrincipal().toString(), authentication.getCredentials().toString());
-        if(user != null){
+        if (user != null) {
             return new UsernamePasswordAuthenticationToken(
                     user.getFirstName(),
                     user.getPassword(),

@@ -6,12 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="zip")
+@Table(name = "zip")
 public class PostCode {
     @Id
     private String zipCode;
 
-    @Column(name="city")
+    @Column(name = "city")
     private String city;
 
     public PostCode(String city, String zipCode) {
@@ -19,7 +19,8 @@ public class PostCode {
         this.zipCode = zipCode;
     }
 
-    public PostCode(){}
+    public PostCode() {
+    }
 
     @Override
     public String toString() {

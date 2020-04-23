@@ -1,6 +1,5 @@
 package com.teameast.parkshark.service.member;
 
-import com.sun.xml.bind.v2.model.core.ID;
 import com.teameast.parkshark.domain.member.MemberAddress;
 import com.teameast.parkshark.domain.member.MemberAddressRepository;
 import com.teameast.parkshark.domain.member.UserRepository;
@@ -9,9 +8,11 @@ import com.teameast.parkshark.domain.phone.PhoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.UUID;
 
+@Transactional
 @Service
 public class MemberService {
 
@@ -37,7 +38,7 @@ public class MemberService {
         return memberMapper.toDto(userRepository.findById(id).orElseThrow());
     }
 
-    public UserDto saveMember(String firstName, String lastName, int licencePlate, String licencePlateCountry, String email, String streetName, String streetNumber, String zipCode, String phoneNumber) {
+    public UserDto saveMember(String firstName, String lastName, String licencePlate, String licencePlateCountry, String email, String streetName, String streetNumber, String zipCode, String phoneNumber) {
         PhoneNumber savedNumber = createOrUpdatePhoneNumber(phoneNumber);
         MemberAddress savedAddress = createOrUpdateMemberAddress(streetName, streetNumber, zipCode);
         return memberMapper.toDto(userRepository.save(memberMapper.toUser(firstName, lastName, licencePlate, licencePlateCountry, email, savedAddress, savedNumber)));
@@ -52,7 +53,7 @@ public class MemberService {
 
     private MemberAddress createMemberAddressIfNew(MemberAddress tempAddress, String streetName, String streetNumber, String zipCode) {
         MemberAddress savedAddress;
-        if(tempAddress == null) {
+        if (tempAddress == null) {
             tempAddress = new MemberAddress(streetName, streetNumber, zipCode);
             savedAddress = memberAddressRepository.save(tempAddress);
         } else savedAddress = tempAddress;
@@ -68,7 +69,7 @@ public class MemberService {
 
     private PhoneNumber createPhoneNumberIfNew(String phoneNumber, PhoneNumber tempNumber) {
         PhoneNumber savedNumber;
-        if(tempNumber == null || tempNumber.getPhoneNumber() == null ) {
+        if (tempNumber == null || tempNumber.getPhoneNumber() == null) {
             tempNumber = new PhoneNumber(phoneNumber);
             savedNumber = phoneRepository.save(tempNumber);
         } else savedNumber = tempNumber;
@@ -78,7 +79,7 @@ public class MemberService {
     private PhoneNumber checkIfAlreadyExists(String phoneNumber) {
         PhoneNumber tempNumber = null;
         for (PhoneNumber number : phoneRepository.findAll()) {
-            if(phoneNumber.equals(number.getPhoneNumber())) tempNumber = number;
+            if (phoneNumber.equals(number.getPhoneNumber())) tempNumber = number;
         }
         return tempNumber;
     }
@@ -86,7 +87,7 @@ public class MemberService {
     private MemberAddress checkIfAlreadyExists(String streetName, String streetNumber, String zipCode) {
         MemberAddress tempAddress = null;
         for (MemberAddress address : memberAddressRepository.findAll()) {
-            if(address.getPostalCode().equals(zipCode)
+            if (address.getPostalCode().equals(zipCode)
                     && address.getStreetName().equals(streetName)
                     && address.getStreetNumber().equals(streetNumber)) {
                 tempAddress = address;
